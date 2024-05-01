@@ -1,0 +1,219 @@
+/* Banner */
+
+.sitecare-banner {
+    align-items: center;
+    background: radial-gradient(100% 58142.02% at 100% 50%, #00145C 0%, #3381FF 100%);
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 40px;
+    margin-left: -20px;
+}
+
+@media (max-width: 768px) {
+    .sitecare-banner {
+        margin-left: -10px;
+    }
+}
+
+.sitecare-banner h1 {
+    background-image: url('../img/logo.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40px;
+    margin: 0;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 151px;
+}
+
+.sitecare-banner .support-button {
+    align-items: center;
+    background-image: url('../img/support.svg');
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-color: transparent;
+    border-radius: 8px;
+    border: 2px solid #FFFFFF66;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 18px;
+    min-height: 18px;
+    padding: 6px 12px 6px 36px;
+    text-decoration: none;
+    vertical-align: middle;
+    color: white;
+}
+
+/* Dashboard */
+
+.sitecare-dashboard .btn {
+    display: inline-block;;
+    background: #E00099;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 8px 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sitecare-dashboard .sitecare-dashboard-wrapper {
+    max-width: 64rem;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid #EAEAEA;
+    padding: 40px;
+}
+
+.sitecare-dashboard h2,
+.sitecare-dashboard .headline {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 0 0 24px;
+}
+
+/* History */
+
+.sitecare-dashboard .history-headline {
+    display: flex;
+    align-items: center;
+}
+
+.sitecare-dashboard .history-headline .headline-text {
+    margin: 0 0 0 8px;
+    line-height: 1;
+}
+
+.sitecare-dashboard .history-headline {
+    display: flex;
+    align-items: center;
+}
+
+.sitecare-dashboard .history-headline .headline-text {
+    margin: 0 0 0 8px;
+    line-height: 1;
+}
+
+.sitecare-dashboard p {
+    font-size: 14px;
+    margin: 0 auto 16px;
+}
+
+/* Start */
+
+.sitecare-dashboard .sitecare-start form .email-checkbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sitecare-dashboard .sitecare-start form .email-checkbox-container label {
+    cursor: pointer;
+}
+
+.sitecare-dashboard .sitecare-start form .email-text-container {
+    margin-bottom: 20px;
+}
+
+.sitecare-dashboard .sitecare-start form .email-text-container .email {
+    margin-top: 2px;
+}
+
+.sitecare-dashboard .sitecare-start form .email {
+    text-align: center;
+    width: 250px;
+}
+
+.sitecare-dashboard .sitecare-start form .disclaimer {
+    font-size: 11px;
+    margin-top: 4em;
+}
+
+/* Scan */
+
+.sitecare-dashboard .sitecare-scan {
+    margin-top: 25px;
+}
+
+.sitecare-dashboard .sitecare-scan .mark {
+    margin-bottom: 20px;
+}
+
+.sitecare-dashboard .sitecare-scan .text {
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.sitecare-dashboard .sitecare-scan .subtext {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.sitecare-dashboard .sitecare-scan .status-text {
+    color: #929292;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.sitecare-dashboard .sitecare-scan .loader-bar-container {
+    margin-bottom: 15px;
+}
+
+.sitecare-dashboard .sitecare-scan .loader-bar-container .ip {
+    width: 8em;
+    height: 4em;
+}
+
+.sitecare-dashboard .sitecare-scan .loader-bar-container .ip__track {
+    stroke: #efefef;
+}
+
+.sitecare-dashboard .sitecare-scan .loader-bar-container .ip__worm1,
+.sitecare-dashboard .sitecare-scan .loader-bar-container .ip__worm2 {
+    animation: worm1 2s linear infinite;
+}
+
+.sitecare-dashboard .sitecare-scan .loader-bar-container .ip__worm2 {
+    animation-name: worm2;
+}
+
+/* Animation */
+
+@keyframes worm1 {
+    from {
+        stroke-dashoffset: 0;
+    }
+    50% {
+        animation-timing-function: steps(1);
+        stroke-dashoffset: -358;
+    }
+    50.01% {
+        animation-timing-function: linear;
+        stroke-dashoffset: 358;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes worm2 {
+    from {
+        stroke-dashoffset: 358;
+    }
+    50% {
+        stroke-dashoffset: 0;
+    }
+    to {
+        stroke-dashoffset: -358;
+    }
+}
