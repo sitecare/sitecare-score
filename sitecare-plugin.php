@@ -4,7 +4,7 @@ namespace Sitecare;
 
 /**
  * Plugin Name: SiteCare
- * Plugin URI: https://github.com/stevezehngut/sitecare-score
+ * Plugin URI: https://github.com/sitecare/sitecare-score
  * Description: Site analysis plugin
  * Author: SiteCare
  * Author URI: https://sitecare.com
