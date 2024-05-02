@@ -43,7 +43,7 @@ function display_sitecare_start()
             <input type="submit" class="btn" value="Scan My Website"/>
 
             <div class="disclaimer">
-                Clicking "Scan my Website" allows us to track usage data to help improve future recommendations in our reports. <a href="https://sitecare.com" target="_blank">More Info</a>.
+                Clicking "Scan my Website" allows us to track usage data to help improve future recommendations in our reports. <a href="https://sitecare.com/usage-tracking/" target="_blank">More Info</a>.
             </div>
 
         </form>
