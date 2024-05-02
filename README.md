@@ -19,14 +19,14 @@ Upon completion of the scan, SiteCare Score generates a comprehensive report and
 
 Discover the power of SiteCare Score with these proactive features:
 
-1. **Verify SSL Security:** Ensure your site's SSL certificate is up to par for secure browsing.
-2. **Check PHP Compatibility:** Check PHP versions for optimal performance and security.
-3. **Web Hosting:** Ensure your web hosting environment is configured according to WordPress best practices.
-4. **Get Seen by Search Engines:** Make sure search engines aren’t blocked from seeing your content.
-5. **Outdated Code:** Quickly identify if WordPress core, plugin, or theme code is outdated.
-6. **Identify Abandoned Themes and Plugins:** Spot outdated elements that likely compromise site security.
-7. **User Permissions:** Identify and flag users with excessive privileges for enhanced site security.
-8. **Historical Reporting:** Use the Scan History page to track your SiteCare Score progress over time.
+* **Verify SSL Security:** Ensure your site's SSL certificate is up to par for secure browsing.
+* **Check PHP Compatibility:** Check PHP versions for optimal performance and security.
+* **Web Hosting:** Ensure your web hosting environment is configured according to WordPress best practices.
+* **Get Seen by Search Engines:** Make sure search engines aren’t blocked from seeing your content.
+* **Outdated Code:** Quickly identify if WordPress core, plugin, or theme code is outdated.
+* **Identify Abandoned Themes and Plugins:** Spot outdated elements that likely compromise site security.
+* **User Permissions:** Identify and flag users with excessive privileges for enhanced site security.
+* **Historical Reporting:** Use the Scan History page to track your SiteCare Score progress over time.
 
 ## Installation
 
