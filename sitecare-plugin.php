@@ -3,7 +3,7 @@
 namespace Sitecare;
 
 /**
- * Plugin Name: SiteCare
+ * Plugin Name: SiteCare Score
  * Plugin URI: https://github.com/sitecare/sitecare-score
  * Description: Find hidden technical debt and track your WordPress site health with our comprehensive scanning tool.
  * Author: SiteCare
