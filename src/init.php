@@ -36,8 +36,6 @@ add_action('admin_menu', function () {
 
     add_action('admin_enqueue_scripts', function ($hook) use ($hook_suffix, $reports_hook_suffix) {
 
-        $test = 1;
-
         if ($hook != $hook_suffix && $hook != $reports_hook_suffix) {
             return;
         }

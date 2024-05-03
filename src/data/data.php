@@ -125,9 +125,7 @@ function createData($full_data = false)
 function check_directory_status($dir_path)
 {
 
-    $test = 1;
     global $wp_filesystem;
-
     require_once ABSPATH . 'wp-admin/includes/file.php';
     WP_Filesystem();
 

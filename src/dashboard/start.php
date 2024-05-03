@@ -22,7 +22,7 @@ function display_sitecare_start()
             to enhance its performance and security.", "sitecare-score") ?>
         </p>
 
-        <form action="<?php echo esc_url(admin_url('admin.php?_wpnonce=' . $nonce . '&page=sitecare-score')) ?>"
+        <form action="<?php echo esc_url(admin_url('admin.php?page=sitecare-score')) ?>"
               method="post">
 
             <div class="email-checkbox-container">
@@ -41,6 +41,7 @@ function display_sitecare_start()
             </div>
 
             <input type="hidden" name="action" value="scan"/>
+            <input type="hidden" name="_wpnonce" value="<?php echo $nonce; ?>"/>
             <input type="submit" class="btn" value="Scan My Website"/>
 
             <div class="disclaimer">

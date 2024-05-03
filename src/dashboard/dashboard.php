@@ -9,13 +9,20 @@ function display_sitecare_score_dashboard()
         return;
     }
 
+    $action = null;
+    if (isset($_REQUEST['_wpnonce'])) {
+        if (wp_verify_nonce($_REQUEST['_wpnonce'], 'sitecare_nonce')) {
+            $action = $_REQUEST['action'];
+        }
+    }
+
     display_sitecare_header();
 
-    if (empty($_REQUEST['action'])) {
+    if (empty($action)) {
         display_sitecare_start();
-    } else if ($_REQUEST['action'] == 'scan') {
+    } else if ($action == 'scan') {
         display_sitecare_scan();
-    } else if ($_REQUEST['action'] == 'report') {
+    } else if ($action == 'report') {
         display_sitecare_report();
     }
 
