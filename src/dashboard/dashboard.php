@@ -9,16 +9,16 @@ function display_sitecare_score_dashboard()
         return;
     }
 
-    echo display_sitecare_header();
+    display_sitecare_header();
 
     if (empty($_REQUEST['action'])) {
-        echo display_sitecare_start();
+        display_sitecare_start();
     } else if ($_REQUEST['action'] == 'scan') {
-        echo display_sitecare_scan();
+        display_sitecare_scan();
     } else if ($_REQUEST['action'] == 'report') {
-        echo display_sitecare_report();
+        display_sitecare_report();
     }
 
-    echo display_sitecare_footer();
+    display_sitecare_footer();
 
 }
