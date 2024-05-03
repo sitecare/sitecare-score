@@ -3,11 +3,11 @@
 * Tags: site health, security, technical debt, SSL, PHP
 * Requires at least: 6.0
 * Tested up to: 6.5.3
-* Stable tag: 1.0
+* Stable tag: 1.0.1
 * License: GPLv2 or later
 * License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Find hidden technical debt and track your WordPress site health with our comprehensive scanning tool. Receive a personalized SiteCare Score that highlights areas for improvement and enhances your site's overall health. Keep a history of SiteCare Scores to track site health improvements over time.
+Find hidden website issues and track your WordPress site health with our comprehensive scanning tool.
 
 ### Description
 
