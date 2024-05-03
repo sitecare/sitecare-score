@@ -5,8 +5,6 @@ namespace Sitecare;
 function display_sitecare_header()
 {
 
-    ob_start();
-
     ?>
 
     <div class="sitecare-dashboard">
@@ -16,7 +14,5 @@ function display_sitecare_header()
             <div class="sitecare-dashboard-wrapper">
 
     <?php
-
-    return ob_get_clean();
 
 }
