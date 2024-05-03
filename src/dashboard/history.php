@@ -25,6 +25,14 @@ function display_sitecare_history()
         </div>
     </div>
 
+    <style>
+        <?php
+        $css_url = get_sitecare_server_url() . '/css/sitecare-history.css';
+        $response = wp_remote_post($css_url);
+        echo wp_kses_post($response['body']);
+        ?>
+    </style>
+
     <?php
 
     $history = get_sitecare_history();
