@@ -50,12 +50,11 @@ add_action('wp_ajax_init_sitecare_scan', function () {
     } else {
 
         $response = json_decode(wp_remote_retrieve_body($response), true);
-        $nonce = wp_create_nonce('sitecare_nonce');
 
         wp_send_json_success([
             'status' => $response['status'],
             'message' => $response['message'],
-            'url' => admin_url('admin.php?_wpnonce=' . $nonce . '&page=sitecare-score&action=report&report_id=' . $response['report_hash'])
+            'url' => admin_url('admin.php?page=sitecare-score&action=report&report_id=' . $response['report_hash'])
         ]);
     }
 

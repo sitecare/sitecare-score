@@ -10,10 +10,8 @@ function display_sitecare_score_dashboard()
     }
 
     $action = null;
-    if (isset($_REQUEST['_wpnonce'])) {
-        if (wp_verify_nonce($_REQUEST['_wpnonce'], 'sitecare_nonce')) {
-            $action = $_REQUEST['action'];
-        }
+    if (isset($_REQUEST['action'])) {
+        $action = $_REQUEST['action'];
     }
 
     display_sitecare_header();
