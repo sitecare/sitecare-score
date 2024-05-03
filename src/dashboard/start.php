@@ -5,8 +5,6 @@ namespace Sitecare;
 function display_sitecare_start()
 {
 
-    ob_start();
-
     ?>
 
     <div class="sitecare-start" style="text-align: center;">
@@ -51,7 +49,5 @@ function display_sitecare_start()
     </div>
 
     <?php
-
-    return ob_get_clean();
 
 }

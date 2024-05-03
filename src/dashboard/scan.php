@@ -5,8 +5,6 @@ namespace Sitecare;
 function display_sitecare_scan()
 {
 
-    ob_start();
-
     if (!empty($_REQUEST['action'])) {
 
         $email_report = false;
@@ -53,7 +51,5 @@ function display_sitecare_scan()
     </div>
 
     <?php
-
-    return ob_get_clean();
 
 }
