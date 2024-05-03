@@ -4,10 +4,10 @@ namespace Sitecare;
 
 add_action('wp_ajax_init_sitecare_scan', function () {
 
-    $nonce = $_POST['security'];
-
-    if (!wp_verify_nonce($nonce, 'sitecare_nonce')) {
-        wp_die('Nonce verification failed!', '', ['response' => 403]);
+    if (isset($_REQUEST['security'])) {
+        if (!wp_verify_nonce($_REQUEST['security'], 'sitecare_nonce')) {
+            wp_die('Nonce verification failed!', '', ['response' => 403]);
+        }
     }
 
     $data = $_POST['data'];
@@ -15,7 +15,7 @@ add_action('wp_ajax_init_sitecare_scan', function () {
 
     if ($query_count < 1) {
         $site_url = get_site_url();
-        $current_datetime = date('Y-m-d H:i:s');
+        $current_datetime = gmdate('Y-m-d H:i:s');
         $to_be_hashed = $site_url . $current_datetime;
         update_option('sitecare_report_id_hash', hash('sha256', $to_be_hashed));
     }
@@ -33,7 +33,7 @@ add_action('wp_ajax_init_sitecare_scan', function () {
     ];
 
     $args = [
-        'body' => json_encode($data),
+        'body' => wp_json_encode($data),
         'headers' => $headers,
         'timeout' => 60
     ];
