@@ -124,7 +124,14 @@ function createData($full_data = false)
 
 function check_directory_status($dir_path)
 {
-    if (is_writable($dir_path)) {
+
+    $test = 1;
+    global $wp_filesystem;
+
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+    WP_Filesystem();
+
+    if ($wp_filesystem->is_writable($dir_path)) {
         return 'true';
     }
 
@@ -138,7 +145,7 @@ function check_ssl_certificate_status($url)
         return 'false';
     }
 
-    $orignal_parse = parse_url($url, PHP_URL_HOST);
+    $orignal_parse = wp_parse_url($url, PHP_URL_HOST);
     $get = stream_context_create(array("ssl" => array("capture_peer_cert" => TRUE)));
     $read = stream_socket_client("ssl://" . $orignal_parse . ":443", $errno, $errstr,
         30, STREAM_CLIENT_CONNECT, $get);
@@ -166,7 +173,7 @@ function get_sitecare_report($hash)
     ];
 
     $args = [
-        'body' => json_encode($data),
+        'body' => wp_json_encode($data),
         'headers' => $headers,
         'timeout' => 60
     ];
@@ -193,7 +200,7 @@ function get_sitecare_history()
     ];
 
     $args = [
-        'body' => json_encode($data),
+        'body' => wp_json_encode($data),
         'headers' => $headers,
         'timeout' => 60
     ];
