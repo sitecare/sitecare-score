@@ -5,7 +5,7 @@ namespace Sitecare;
 function display_sitecare_start()
 {
 
-    $nonce = wp_create_nonce('sitecare_score_nonce');
+    $nonce = wp_create_nonce('sitecare_nonce');
 
     ?>
 

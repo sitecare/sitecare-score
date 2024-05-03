@@ -36,16 +36,15 @@ add_action('admin_menu', function () {
 
     add_action('admin_enqueue_scripts', function ($hook) use ($hook_suffix, $reports_hook_suffix) {
 
+        $test = 1;
+
         if ($hook != $hook_suffix && $hook != $reports_hook_suffix) {
             return;
         }
 
-        $current_page = isset($_GET['page']) ? $_GET['page'] : '';
-
-        if (('sitecare-reports' != $current_page) && ('sitecare-score' != $current_page)) {
+        if (str_contains($hook, 'sitecare-score') === false) {
             return;
         }
-
 
         $ver = get_current_plugin_version();
 
@@ -56,6 +55,11 @@ add_action('admin_menu', function () {
             $ver
         );
 
+        if (isset($_REQUEST['_wpnonce'])) {
+            if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'sitecare_nonce')) {
+                return;
+            }
+        }
 
         if (!isset($_REQUEST['action'])) {
 
@@ -67,7 +71,7 @@ add_action('admin_menu', function () {
                 'sitecare-start-script',
                 $path,
                 ['jquery'],
-                null,
+                $ver,
                 true
             );
 
@@ -83,7 +87,7 @@ add_action('admin_menu', function () {
                 'sitecare-scan-script',
                 $path,
                 ['jquery'],
-                null,
+                $ver,
                 true
             );
 
