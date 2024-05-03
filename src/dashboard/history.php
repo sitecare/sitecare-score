@@ -9,6 +9,29 @@ function display_sitecare_history()
         return;
     }
 
+    $kses_defaults = wp_kses_allowed_html('post');
+
+    $svg_args = [
+        'svg' => [
+            'class' => true,
+            'aria-hidden' => true,
+            'aria-labelledby' => true,
+            'role' => true,
+            'xmlns' => true,
+            'width' => true,
+            'height' => true,
+            'viewbox' => true
+        ],
+        'g' => ['fill' => true],
+        'title' => ['title' => true],
+        'path' => [
+            'd' => true,
+            'fill' => true
+        ],
+    ];
+
+    $allowed_tags = array_merge($kses_defaults, $svg_args);
+
     display_sitecare_header();
 
     ?>
@@ -37,7 +60,7 @@ function display_sitecare_history()
 
     $history = get_sitecare_history();
     $body = json_decode($history['body']);
-    echo $body->html;
+    echo wp_kses($body->html, $allowed_tags);
 
     display_sitecare_footer();
 
