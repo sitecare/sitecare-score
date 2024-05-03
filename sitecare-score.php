@@ -13,6 +13,7 @@ namespace Sitecare;
  */
 
 define( 'SITECARE_REMOTE_URL', 'https://sitecarescore.zengy.com' );
+define( 'SITECARE_PLUGIN_URL', plugin_dir_url(__FILE__) );
 define( 'SITECARE_PLUGIN_DIR', dirname(__FILE__) );
 define( 'SITECARE_PLUGIN_FILE', __FILE__ );
 
