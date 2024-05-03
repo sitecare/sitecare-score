@@ -41,7 +41,7 @@ function display_sitecare_start()
             </div>
 
             <input type="hidden" name="action" value="scan"/>
-            <input type="hidden" name="_wpnonce" value="<?php echo $nonce; ?>"/>
+            <input type="hidden" name="_wpnonce" value="<?php echo esc_attr($nonce); ?>"/>
             <input type="submit" class="btn" value="Scan My Website"/>
 
             <div class="disclaimer">
