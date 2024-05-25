@@ -10,6 +10,8 @@ namespace Sitecare;
  * Author URI: https://sitecare.com
  * Version: 1.0.1
  * Text Domain: sitecare-score
+ * License: GPL2
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 define( 'SITECARE_REMOTE_URL', 'https://sitecarescore.zengy.com' );
