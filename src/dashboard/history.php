@@ -44,7 +44,7 @@ function display_sitecare_history()
         </svg>
 
         <div class="headline-text">
-            <?php esc_html_e("Score History", "sitecare-score") ?>
+            <?php esc_html_e('Score History', 'sitecare-score') ?>
         </div>
     </div>
 
