@@ -5,13 +5,18 @@ namespace Sitecare;
 add_action('wp_ajax_init_sitecare_scan', function () {
 
     if (isset($_REQUEST['security'])) {
-        if (!wp_verify_nonce($_REQUEST['security'], 'sitecare_nonce')) {
+        $security_nonce = sanitize_text_field($_REQUEST['security']);
+        if (!wp_verify_nonce($security_nonce, 'sitecare_nonce')) {
             wp_die('Nonce verification failed!', '', ['response' => 403]);
         }
     }
 
-    $data = $_POST['data'];
-    $query_count = $data['query_count'];
+    $query_count = 0;
+
+    if (isset($_POST['data'])) {
+        $query_count = sanitize_key($_POST['data']['query_count']);
+        $query_count = intval($query_count);
+    }
 
     if ($query_count < 1) {
         $site_url = get_site_url();

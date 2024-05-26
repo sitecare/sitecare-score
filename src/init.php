@@ -16,7 +16,7 @@ add_action('admin_menu', function () {
         6
     );
 
-    $hook_suffix = add_submenu_page(
+    add_submenu_page(
         'sitecare-score',
         'Scan My Site',
         'Scan My Site',
@@ -25,7 +25,7 @@ add_action('admin_menu', function () {
         __NAMESPACE__ . '\display_sitecare_score_dashboard'
     );
 
-    $reports_hook_suffix = add_submenu_page(
+    add_submenu_page(
         'sitecare-score',
         'Score History',
         'Score History',
@@ -34,72 +34,82 @@ add_action('admin_menu', function () {
         __NAMESPACE__ . '\display_sitecare_history'
     );
 
-    add_action('admin_enqueue_scripts', function ($hook) use ($hook_suffix, $reports_hook_suffix) {
+});
 
-        if ($hook != $hook_suffix && $hook != $reports_hook_suffix) {
+add_action('admin_enqueue_scripts', function () {
+
+    $screen = get_current_screen();
+
+    if (!str_contains($screen->id, 'sitecare-score')) {
+        return;
+    }
+
+    $ver = get_current_plugin_version();
+
+    wp_enqueue_style(
+        'sitecare-admin-css',
+        plugin_dir_url(__FILE__) . 'dashboard/sitecare-style.css',
+        false,
+        $ver
+    );
+
+    if (isset($_REQUEST['_wpnonce'])) {
+        $nonce = sanitize_text_field($_REQUEST['_wpnonce']);
+        if (!wp_verify_nonce($nonce, 'sitecare_nonce')) {
             return;
         }
+    }
 
-        if (str_contains($hook, 'sitecare-score') === false) {
-            return;
-        }
+    if (!get_sitecare_action()) {
 
-        $ver = get_current_plugin_version();
+        // Add start script
 
-        wp_enqueue_style(
-            'sitecare-admin-css',
-            plugin_dir_url(__FILE__) . 'dashboard/sitecare-style.css',
-            false,
-            $ver
+        $path = plugin_dir_url(__FILE__) . 'data/sitecare-start.js';
+
+        wp_enqueue_script(
+            'sitecare-start-script',
+            $path,
+            ['jquery'],
+            $ver,
+            true
         );
 
-        if (isset($_REQUEST['_wpnonce'])) {
-            if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'sitecare_nonce')) {
-                return;
-            }
-        }
+    }
 
-        if (!isset($_REQUEST['action'])) {
+    if ('scan' == get_sitecare_action()) {
 
-            // Add start script
+        // Add scanning script
 
-            $path = plugin_dir_url(__FILE__) . 'data/sitecare-start.js';
+        $path = plugin_dir_url(__FILE__) . 'data/sitecare-scan.js';
 
-            wp_enqueue_script(
-                'sitecare-start-script',
-                $path,
-                ['jquery'],
-                $ver,
-                true
-            );
+        wp_enqueue_script(
+            'sitecare-scan-script',
+            $path,
+            ['jquery'],
+            $ver,
+            true
+        );
 
-        }
+        wp_localize_script(
+            'sitecare-scan-script',
+            'SiteCarePluginAjax',
+            [
+                'ajax_url' => admin_url('admin-ajax.php'),
+                'nonce' => wp_create_nonce('sitecare_nonce'),
+            ]
+        );
 
-        if ((isset($_REQUEST['action'])) && ($_REQUEST['action'] == 'scan')) {
-
-            // Add scanning script
-
-            $path = plugin_dir_url(__FILE__) . 'data/sitecare-scan.js';
-
-            wp_enqueue_script(
-                'sitecare-scan-script',
-                $path,
-                ['jquery'],
-                $ver,
-                true
-            );
-
-            wp_localize_script(
-                'sitecare-scan-script',
-                'SiteCarePluginAjax',
-                [
-                    'ajax_url' => admin_url('admin-ajax.php'),
-                    'nonce' => wp_create_nonce('sitecare_nonce'),
-                ]
-            );
-
-        }
-
-    });
+    }
 
 });
+
+function get_sitecare_action()
+{
+
+    if (!isset($_REQUEST['action'])) {
+        return null;
+    }
+
+    return sanitize_text_field($_REQUEST['action']);
+
+}

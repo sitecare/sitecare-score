@@ -5,6 +5,10 @@ namespace Sitecare;
 function display_sitecare_report()
 {
 
+    if ('report' != get_sitecare_action()) {
+        return;
+    }
+
     if (empty($_REQUEST['report_id'])) {
         return;
     }
@@ -65,7 +69,7 @@ function display_sitecare_report()
 
     <?php
 
-    $data = get_sitecare_report($_REQUEST['report_id']);
+    $data = get_sitecare_report(sanitize_text_field($_REQUEST['report_id']));
     $report = json_decode($data['body']);
     echo wp_kses($report->html, $allowed_tags);
 

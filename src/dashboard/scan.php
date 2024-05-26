@@ -5,21 +5,21 @@ namespace Sitecare;
 function display_sitecare_scan()
 {
 
-    if (!empty($_REQUEST['action'])) {
-
-        $email_report = false;
-        if (!empty($_REQUEST['email_report'])) {
-            $email_report = $_REQUEST['email_report'];
-        }
-
-        $settings = [
-            'email_report' => sanitize_key($email_report),
-            'email' => sanitize_email($_REQUEST['email']),
-        ];
-
-        update_option('sitecare_scan_settings', $settings);
-
+    if ('scan' != get_sitecare_action()) {
+        return;
     }
+
+    $email_report = false;
+    if (!empty($_REQUEST['email_report'])) {
+        $email_report = sanitize_key($_REQUEST['email_report']);
+    }
+
+    $settings = [
+        'email_report' => $email_report,
+        'email' => sanitize_email($_REQUEST['email']),
+    ];
+
+    update_option('sitecare_scan_settings', $settings);
 
     ?>
 
