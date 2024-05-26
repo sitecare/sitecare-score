@@ -8,7 +8,7 @@ namespace Sitecare;
  * Description: Find hidden technical debt and track your WordPress site health with our comprehensive scanning tool.
  * Author: SiteCare
  * Author URI: https://sitecare.com
- * Version: 1.0.1
+ * Version: 1.0.2
  * Text Domain: sitecare-score
  * License: GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
