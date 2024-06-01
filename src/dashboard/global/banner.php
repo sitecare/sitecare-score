@@ -4,9 +4,9 @@ namespace Sitecare;
 
 add_action('admin_notices', function () {
 
-    $page = basename($_SERVER['REQUEST_URI']);
+    $screen = get_current_screen();
 
-    if (!str_contains($page, 'sitecare-reports') && !str_contains($page, 'sitecare-score')) {
+    if (!str_contains($screen->id, 'sitecare-reports') && !str_contains($screen->id, 'sitecare-score')) {
         return;
     }
 
