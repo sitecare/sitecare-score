@@ -48,14 +48,6 @@ function display_sitecare_history()
         </div>
     </div>
 
-    <style>
-        <?php
-        $css_url = get_sitecare_server_url() . '/css/sitecare-history.css';
-        $response = wp_remote_post($css_url);
-        echo wp_kses_post($response['body']);
-        ?>
-    </style>
-
     <?php
 
     $history = get_sitecare_history();
@@ -65,3 +57,22 @@ function display_sitecare_history()
     display_sitecare_footer();
 
 }
+
+add_action('admin_enqueue_scripts', function () {
+
+    $screen = get_current_screen();
+
+    if (!str_contains($screen->id, 'sitecare-reports')) {
+        return;
+    }
+
+    $css_url = get_sitecare_server_url() . '/css/sitecare-history.css';
+
+    wp_enqueue_style(
+        'sitecare-history',
+        $css_url,
+        false,
+        get_current_plugin_version()
+    );
+
+});

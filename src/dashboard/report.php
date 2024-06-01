@@ -56,33 +56,41 @@ function display_sitecare_report()
     ];
 
     $allowed_tags = array_merge($kses_defaults, $svg_args);
-
-    ?>
-
-    <style>
-        <?php
-        $css_url = get_sitecare_server_url() . '/css/sitecare-report.css';
-        $response = wp_remote_post($css_url);
-        echo wp_kses_post($response['body']);
-        ?>
-    </style>
-
-    <?php
-
     $data = get_sitecare_report(sanitize_text_field($_REQUEST['report_id']));
     $report = json_decode($data['body']);
     echo wp_kses($report->html, $allowed_tags);
 
-    ?>
-
-    <script>
-        <?php
-        $css_url = get_sitecare_server_url() . '/js/sitecare-report.js';
-        $response = wp_remote_post($css_url);
-        echo wp_kses_post($response['body']);
-        ?>
-    </script>
-
-    <?php
-
 }
+
+add_action('admin_enqueue_scripts', function () {
+
+    $screen = get_current_screen();
+
+    if (!str_contains($screen->id, 'sitecare-score')) {
+        return;
+    }
+
+    if ('report' != get_sitecare_action()) {
+        return;
+    }
+
+    $css_url = get_sitecare_server_url() . '/css/sitecare-report.css';
+
+    wp_enqueue_style(
+        'sitecare-report',
+        $css_url,
+        false,
+        get_current_plugin_version()
+    );
+
+    $js_url = get_sitecare_server_url() . '/js/sitecare-report.js';
+
+    wp_enqueue_script(
+        'sitecare-report',
+        $js_url,
+        ['jquery'],
+        get_current_plugin_version(),
+        ['in_footer' => true]
+    );
+
+});
