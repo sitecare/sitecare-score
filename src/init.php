@@ -30,7 +30,7 @@ add_action('admin_menu', function () {
         'Score History',
         'Score History',
         'manage_options',
-        'sitecare-reports',
+        'sitecare-history',
         __NAMESPACE__ . '\display_sitecare_history'
     );
 

@@ -6,7 +6,7 @@ add_action('admin_notices', function () {
 
     $screen = get_current_screen();
 
-    if (!str_contains($screen->id, 'sitecare-reports') && !str_contains($screen->id, 'sitecare-score')) {
+    if (!str_contains($screen->id, 'sitecare-history') && !str_contains($screen->id, 'sitecare-score')) {
         return;
     }
 

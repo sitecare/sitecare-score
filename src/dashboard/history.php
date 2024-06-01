@@ -62,7 +62,7 @@ add_action('admin_enqueue_scripts', function () {
 
     $screen = get_current_screen();
 
-    if (!str_contains($screen->id, 'sitecare-reports')) {
+    if (!str_contains($screen->id, 'sitecare-history')) {
         return;
     }
 
