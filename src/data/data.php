@@ -38,8 +38,6 @@ function createData($full_data = false)
     $data['php_uname'] = php_uname();
     $data['content_dir_writable'] = check_directory_status(WP_CONTENT_DIR);
     //  $data['ssl_certificate_status'] = check_ssl_certificate_status( get_site_url() );
-    $data['disk_total_space'] = disk_total_space(ABSPATH);
-    $data['disk_free_space'] = disk_free_space(ABSPATH);
     $data['blog_public'] = get_option('blog_public');
     $data['plugins'] = [];
     $data['themes'] = [];
@@ -48,6 +46,16 @@ function createData($full_data = false)
     $data['admin_count'] = get_admin_user_count();
     $data['admin_user_exists'] = get_username_admin_exists();
     $data['smtp'] = get_smtp_exists();
+
+    $data['disk_total_space'] = 'not available';
+    if (function_exists('disk_total_space')) {
+        $data['disk_total_space'] = disk_total_space(ABSPATH);
+    }
+
+    $data['disk_free_space'] = 'not available';
+    if (function_exists('disk_free_space')) {
+        $data['disk_free_space'] = disk_free_space(ABSPATH);
+    }
 
     $url = 'admin.php?page=sitecare-score';
     $data['admin_url'] = admin_url($url);
