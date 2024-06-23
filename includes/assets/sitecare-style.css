@@ -16,7 +16,7 @@
 }
 
 .sitecare-banner h1 {
-    background-image: url('../img/logo.svg');
+    background-image: url('../assets/logo.svg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -29,7 +29,7 @@
 
 .sitecare-banner .support-button {
     align-items: center;
-    background-image: url('../img/support.svg');
+    background-image: url('../assets/support.svg');
     background-position: 10px center;
     background-repeat: no-repeat;
     background-size: 18px 18px;

@@ -27,7 +27,7 @@ add_action('wp_ajax_init_sitecare_scan', function () {
 
     $hash = get_option('sitecare_report_id_hash');
 
-    $remote_api_url = get_sitecare_server_url() . '/api/send-wp-data';
+    $remote_api_url = $this->get_server_url() . '/api/send-wp-data';
 
     $headers = ['Content-Type' => 'application/json'];
 

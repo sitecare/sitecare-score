@@ -1,6 +1,6 @@
 <?php
 
-namespace Sitecare;
+namespace SiteCare;
 
 /**
  * Plugin Name: SiteCare Score
@@ -8,26 +8,32 @@ namespace Sitecare;
  * Description: Find hidden technical debt and track your WordPress site health with our comprehensive scanning tool.
  * Author: SiteCare
  * Author URI: https://sitecare.com
- * Version: 1.0.4
+ * Version: 1.1
  * Text Domain: sitecare-score
  * License: GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-define( 'SITECARE_REMOTE_URL', 'https://sitecarescore.zengy.com' );
-define( 'SITECARE_PLUGIN_URL', plugin_dir_url(__FILE__) );
-define( 'SITECARE_PLUGIN_DIR', dirname(__FILE__) );
-define( 'SITECARE_PLUGIN_FILE', __FILE__ );
+if (!defined('ABSPATH')) {
+    exit;
+}
 
-include 'src/init.php';
-include 'src/data/ajax.php';
-include 'src/data/data.php';
-include 'src/data/wpcli.php';
-include 'src/dashboard/global/banner.php';
-include 'src/dashboard/global/header.php';
-include 'src/dashboard/global/footer.php';
-include 'src/dashboard/dashboard.php';
-include 'src/dashboard/start.php';
-include 'src/dashboard/scan.php';
-include 'src/dashboard/report.php';
-include 'src/dashboard/history.php';
+if (!defined('SITECARE_REMOTE_URL')) {
+    define('SITECARE_REMOTE_URL', 'https://sitecarescore.zengy.com');
+}
+
+if (!defined('SITECARE_PLUGIN_URL')) {
+    define('SITECARE_PLUGIN_URL', plugin_dir_url(__FILE__));
+}
+
+if (!defined('SITECARE_PLUGIN_DIR')) {
+    define('SITECARE_PLUGIN_DIR', dirname(__FILE__));
+}
+
+if (!defined('SITECARE_PLUGIN_FILE')) {
+    define('SITECARE_PLUGIN_FILE', __FILE__);
+}
+
+require_once plugin_dir_path(__FILE__) . 'includes/autoloader.php';
+
+new Score();
