@@ -43,9 +43,16 @@ class Start
                 </div>
 
                 <div class="email-text-container">
-                    <div> <?php esc_html_e('Email the report to', 'sitecare-score') ?>:</div>
-                    <input type="text" id="email" name="email" class="email"
-                           value="<?php echo esc_attr(get_option('admin_email')); ?>"/>
+                    <label for="email" style="display: block;">
+                        <?php esc_html_e('Email the report to', 'sitecare-score') ?>:
+                    </label>
+                    <input
+                            type="text"
+                            id="email"
+                            name="email"
+                            class="email"
+                            value="<?php echo esc_attr(get_option('admin_email')); ?>"
+                    />
                 </div>
 
                 <input type="hidden" name="action" value="scan"/>
