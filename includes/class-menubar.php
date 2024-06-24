@@ -5,8 +5,6 @@ namespace SiteCare;
 class MenuBar extends Core
 {
 
-    private $start, $scan, $report;
-
     public function __construct()
     {
         add_action('admin_bar_menu', [$this, 'add_admin_bar'], 50);

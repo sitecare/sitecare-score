@@ -4,7 +4,7 @@ namespace Sitecare;
 
 class Data extends Core
 {
-    public function init($full_data = false)
+    public function init($full_data = false): array
     {
 
         global $wpdb, $wp_version;
@@ -132,7 +132,7 @@ class Data extends Core
 
     }
 
-    public function check_directory_status($dir_path)
+    public function check_directory_status($dir_path): string
     {
 
         global $wp_filesystem;
@@ -146,7 +146,7 @@ class Data extends Core
         return 'false';
     }
 
-    public function check_ssl_certificate_status($url)
+    public function check_ssl_certificate_status($url): false|array|string
     {
 
         if (strpos($url, 'https') === false) {
@@ -169,7 +169,7 @@ class Data extends Core
     }
 
 
-    public function get_admin_user_count()
+    public function get_admin_user_count(): int
     {
         $args = [
             'role' => 'Administrator',
@@ -184,7 +184,7 @@ class Data extends Core
         return $admin_count;
     }
 
-    public function get_username_admin_exists()
+    public function get_username_admin_exists(): bool
     {
         if (username_exists('admin')) {
             return true;
@@ -193,7 +193,7 @@ class Data extends Core
         }
     }
 
-    public function get_smtp_exists()
+    public function get_smtp_exists(): bool
     {
 
         global $phpmailer;

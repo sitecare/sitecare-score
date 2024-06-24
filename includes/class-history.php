@@ -10,7 +10,7 @@ class History extends Core
         add_action('admin_enqueue_scripts', [$this, 'admin_enqueue_scripts']);
     }
 
-    public function init()
+    public function init(): void
     {
 
         $kses_defaults = wp_kses_allowed_html('post');
@@ -56,7 +56,7 @@ class History extends Core
 
     }
 
-    public function get_history()
+    public function get_history(): \WP_Error|array
     {
 
         $wp_admin_url = 'admin.php?page=sitecare-score';
@@ -83,7 +83,7 @@ class History extends Core
 
     }
 
-    public function admin_enqueue_scripts()
+    public function admin_enqueue_scripts(): void
     {
 
         $screen = get_current_screen();

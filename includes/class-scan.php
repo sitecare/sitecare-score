@@ -9,7 +9,7 @@ class Scan
     {
     }
 
-    public function init()
+    public function init(): void
     {
 
         $email_report = false;

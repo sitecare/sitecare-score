@@ -5,27 +5,18 @@ namespace SiteCare;
 class Ajax extends Core
 {
 
-    private $data;
+    private Data $data;
 
     public function __construct()
     {
-        add_action('wp_ajax_init_sitecare_scan', [$this, 'handle_ajax']);
-        add_action('wp_ajax_nopriv_init_sitecare_scan', [$this, 'handle_ajax']);
+        add_action('wp_ajax_sitecare_score_scan', [$this, 'handle_ajax']);
+        add_action('wp_ajax_nopriv_sitecare_score_scan', [$this, 'handle_ajax']);
         add_action('admin_enqueue_scripts', [$this, 'admin_enqueue_scripts']);
         $this->data = new Data();
     }
 
-    public function handle_ajax()
+    public function handle_ajax(): void
     {
-
-//        check_ajax_referer('my_nonce', 'security');
-//
-//        $response = array(
-//            'status' => 'success',
-//            'message' => 'AJAX request processed successfully!'
-//        );
-//
-//        wp_send_json($response);
 
         if (isset($_REQUEST['security'])) {
             $security_nonce = sanitize_text_field($_REQUEST['security']);
@@ -86,10 +77,9 @@ class Ajax extends Core
             ]);
         }
 
-//        wp_die();
     }
 
-    public function admin_enqueue_scripts()
+    public function admin_enqueue_scripts(): void
     {
 
         if ('scan' != $this->get_action()) {

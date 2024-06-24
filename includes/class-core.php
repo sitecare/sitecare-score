@@ -22,7 +22,7 @@ class Core
         return $plugin_data['Version'];
     }
 
-    public function display_header()
+    public function display_header(): void
     {
 
         $this->display_banner();
@@ -75,7 +75,7 @@ class Core
         <?php
     }
 
-    public function get_server_url()
+    public function get_server_url(): string
     {
 
         if (defined('SITECARE_REMOTE_URL')) {

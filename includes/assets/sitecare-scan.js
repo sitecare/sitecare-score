@@ -27,7 +27,7 @@ jQuery(document).ready(function ($) {
             type: "POST",
             url: SiteCarePluginAjax.ajax_url,
             data: {
-                action: "init_sitecare_scan",
+                action: "sitecare_score_scan",
                 security: SiteCarePluginAjax.nonce,
                 data: data
             },

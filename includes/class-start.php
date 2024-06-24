@@ -10,7 +10,7 @@ class Start
 
     }
 
-    public function init()
+    public function init(): void
     {
 
         $nonce = wp_create_nonce('sitecare_nonce');
