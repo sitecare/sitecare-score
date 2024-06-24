@@ -5,8 +5,7 @@ namespace SiteCare;
 class Score extends Core
 {
 
-    private $dashboard;
-    private $history;
+    private $dashboard, $history, $ajax;
 
     public function __construct()
     {
@@ -60,32 +59,6 @@ class Score extends Core
             );
 
         }
-
-        if ('scan' == $this->get_action()) {
-
-            // Add scanning script
-
-            $path = plugin_dir_url(__FILE__) . 'assets/sitecare-scan.js';
-
-            wp_enqueue_script(
-                'sitecare-scan-script',
-                $path,
-                ['jquery'],
-                $ver,
-                true
-            );
-
-            wp_localize_script(
-                'sitecare-scan-script',
-                'SiteCarePluginAjax',
-                [
-                    'ajax_url' => admin_url('admin-ajax.php'),
-                    'nonce' => wp_create_nonce('sitecare_nonce'),
-                ]
-            );
-
-        }
-
 
     }
 
