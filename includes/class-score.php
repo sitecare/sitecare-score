@@ -16,6 +16,7 @@ class Score extends Core
 
         $this->dashboard = new Dashboard();
         $this->history = new History();
+        $this->ajax = new Ajax();
 
     }
 
@@ -44,7 +45,7 @@ class Score extends Core
             }
         }
 
-        if (!$this->get_action()) {
+        if (empty($this->get_action())) {
 
             // Add start script
 

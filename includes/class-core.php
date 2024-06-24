@@ -5,7 +5,7 @@ namespace SiteCare;
 class Core
 {
 
-    public function get_action(): string
+    public function get_action($str=''): string
     {
 
         if (!isset($_REQUEST['action'])) {

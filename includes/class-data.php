@@ -4,7 +4,7 @@ namespace Sitecare;
 
 class Data extends Core
 {
-    public function createData($full_data = false)
+    public function init($full_data = false)
     {
 
         global $wpdb, $wp_version;
@@ -23,7 +23,7 @@ class Data extends Core
         $data['email_report'] = $settings['email_report'];
         $data['email'] = $settings['email'];
 
-        $data['plugin_version'] = get_current_plugin_version();
+        $data['plugin_version'] = $this->get_current_plugin_version();
         $data['admin_email'] = get_option('admin_email');
         $data['admin_first_name'] = $user->first_name;
         $data['admin_last_name'] = $user->last_name;
@@ -38,16 +38,16 @@ class Data extends Core
         $data['db_type'] = $wpdb->db_version();
         $data['db_version'] = $wpdb->db_version();
         $data['php_uname'] = php_uname();
-        $data['content_dir_writable'] = check_directory_status(WP_CONTENT_DIR);
+        $data['content_dir_writable'] = $this->check_directory_status(WP_CONTENT_DIR);
         //  $data['ssl_certificate_status'] = check_ssl_certificate_status( get_site_url() );
         $data['blog_public'] = get_option('blog_public');
         $data['plugins'] = [];
         $data['themes'] = [];
         $data['active_theme'] = [];
         $data['user_count'] = count_users();
-        $data['admin_count'] = get_admin_user_count();
-        $data['admin_user_exists'] = get_username_admin_exists();
-        $data['smtp'] = get_smtp_exists();
+        $data['admin_count'] = $this->get_admin_user_count();
+        $data['admin_user_exists'] = $this->get_username_admin_exists();
+        $data['smtp'] = $this->get_smtp_exists();
 
         $data['disk_total_space'] = 'not available';
         if (function_exists('disk_total_space')) {
