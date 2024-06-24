@@ -5,7 +5,7 @@ namespace SiteCare;
 class Core
 {
 
-    public function get_action($str=''): string
+    public function get_action($str = ''): string
     {
 
         if (!isset($_REQUEST['action'])) {
@@ -24,6 +24,8 @@ class Core
 
     public function display_header()
     {
+
+        $this->display_banner();
 
         ?>
 
@@ -54,12 +56,6 @@ class Core
 
     public function display_banner(): void
     {
-
-        $screen = get_current_screen();
-
-        if (!str_contains($screen->id, 'sitecare-history') && !str_contains($screen->id, 'sitecare-score')) {
-            return;
-        }
 
         ?>
 

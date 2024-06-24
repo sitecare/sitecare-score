@@ -12,7 +12,7 @@ class Score extends Core
 
         add_action('admin_menu', [$this, 'plugin_menu']);
         add_action('admin_enqueue_scripts', [$this, 'admin_enqueue_scripts']);
-        add_action('admin_notices', [$this, 'display_banner']);
+        add_action('in_admin_header', [$this, 'hide_admin_notices'], 99);
 
         $this->dashboard = new Dashboard();
         $this->history = new History();
@@ -94,6 +94,19 @@ class Score extends Core
             'sitecare-history',
             [$this->history, 'init'],
         );
+    }
+
+    public function hide_admin_notices(): void
+    {
+
+        $screen = get_current_screen();
+
+        if (!str_contains($screen->id, 'sitecare-history') && !str_contains($screen->id, 'sitecare-score')) {
+            return;
+        }
+
+        remove_all_actions('user_admin_notices');
+        remove_all_actions('admin_notices');
     }
 
 }
