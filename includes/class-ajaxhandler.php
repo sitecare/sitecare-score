@@ -2,17 +2,14 @@
 
 namespace SiteCare;
 
-class Ajax extends Core
+class AjaxHandler extends Data
 {
-
-    private Data $data;
 
     public function __construct()
     {
         add_action('wp_ajax_sitecare_score_scan', [$this, 'handle_ajax']);
         add_action('wp_ajax_nopriv_sitecare_score_scan', [$this, 'handle_ajax']);
         add_action('admin_enqueue_scripts', [$this, 'admin_enqueue_scripts']);
-        $this->data = new Data();
     }
 
     public function handle_ajax(): void
@@ -25,39 +22,13 @@ class Ajax extends Core
             }
         }
 
-        $query_count = 0;
 
+        $init = false;
         if (isset($_POST['data'])) {
-            $query_count = sanitize_key($_POST['data']['query_count']);
-            $query_count = intval($query_count);
+            $init = sanitize_key($_POST['data']['init']);
         }
 
-        if ($query_count < 1) {
-            $site_url = get_site_url();
-            $current_datetime = gmdate('Y-m-d H:i:s');
-            $to_be_hashed = $site_url . $current_datetime;
-            update_option('sitecare_report_id_hash', hash('sha256', $to_be_hashed));
-        }
-
-        $hash = get_option('sitecare_report_id_hash');
-
-        $remote_api_url = $this->get_server_url() . '/api/send-wp-data';
-
-        $headers = ['Content-Type' => 'application/json'];
-
-        $data = [
-            'query_count' => $query_count,
-            'report_hash' => $hash,
-            'site_data' => $this->data->init(($query_count == 0))
-        ];
-
-        $args = [
-            'body' => wp_json_encode($data),
-            'headers' => $headers,
-            'timeout' => 60
-        ];
-
-        $response = wp_remote_post($remote_api_url, $args);
+        $response = $this->send_data($init);
 
         if (is_wp_error($response)) {
 

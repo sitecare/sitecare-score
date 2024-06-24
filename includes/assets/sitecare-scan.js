@@ -3,9 +3,8 @@ jQuery(document).ready(function ($) {
     console.log('getSitecareScan loaded');
 
     var isProcessing = false;
-    var query_count = 0;
 
-    function getSitecareScan() {
+    function getSitecareScan($init = false) {
 
         if (isProcessing) {
             console.log('Request already in process.');
@@ -13,15 +12,12 @@ jQuery(document).ready(function ($) {
         }
 
         console.log('getSitecareScan called');
-        console.log('count: ' + query_count);
 
         isProcessing = true; // Set processing flag
 
         var data = {
-            'query_count': query_count
+            'init': $init
         };
-
-        query_count++;
 
         $.ajax({
             type: "POST",
@@ -49,5 +45,5 @@ jQuery(document).ready(function ($) {
         });
     }
 
-    getSitecareScan();
+    getSitecareScan(true);
 });

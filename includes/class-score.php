@@ -5,7 +5,8 @@ namespace SiteCare;
 class Score extends Core
 {
 
-    private $ajax, $menubar, $dashboard, $history;
+    private History $history;
+    private Dashboard $dashboard;
 
     public function __construct()
     {
@@ -14,8 +15,10 @@ class Score extends Core
         add_action('admin_enqueue_scripts', [$this, 'admin_enqueue_scripts']);
         add_action('in_admin_header', [$this, 'hide_admin_notices'], 99);
 
-        $this->ajax = new Ajax();
-        $this->menubar = new MenuBar();
+        new AjaxHandler();
+        new CronHandler();
+        new MenuBar();
+
         $this->dashboard = new Dashboard();
         $this->history = new History();
 

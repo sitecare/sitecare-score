@@ -4,7 +4,7 @@ namespace Sitecare;
 
 class Data extends Core
 {
-    public function init($full_data = false): array
+    public function get_data($full_data = false): array
     {
 
         global $wpdb, $wp_version;
@@ -129,6 +129,45 @@ class Data extends Core
         }
 
         return $data;
+
+    }
+
+    public function send_data($full_data = false): \WP_Error|array
+    {
+
+        $hash = $this->get_hash();
+        $headers = ['Content-Type' => 'application/json'];
+
+        $data = [
+            'init' => $full_data,
+            'report_hash' => $hash,
+            'site_data' => $this->get_data(($full_data))
+        ];
+
+        $args = [
+            'body' => wp_json_encode($data),
+            'headers' => $headers,
+            'timeout' => 60
+        ];
+
+        $remote_api_url = $this->get_server_url() . '/api/send-wp-data';
+        return wp_remote_post($remote_api_url, $args);
+
+    }
+
+    public function get_hash($init = false): string
+    {
+
+        $option_name = 'sitecare_report_id_hash';
+
+        if ($init) {
+            $site_url = get_site_url();
+            $current_datetime = gmdate('Y-m-d H:i:s');
+            $to_be_hashed = $site_url . $current_datetime;
+            update_option($option_name, hash('sha256', $to_be_hashed));
+        }
+
+        return get_option($option_name);
 
     }
 
