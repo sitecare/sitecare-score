@@ -92,7 +92,7 @@ class History extends Core
             return;
         }
 
-        $css_url = $this->get_server_url() . '/css/sitecare-history.css';
+        $css_url = $this->get_server_url() . '/css/sitecare-score.css';
 
         wp_enqueue_style(
             'sitecare-history',
