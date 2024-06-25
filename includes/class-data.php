@@ -4,7 +4,7 @@ namespace Sitecare;
 
 class Data extends Core
 {
-    public function get_data($full_data = false): array
+    public function get_data($init = false): array
     {
 
         global $wpdb, $wp_version;
@@ -14,7 +14,7 @@ class Data extends Core
 
         $data = ['url' => get_site_url()];
 
-        if (!$full_data) {
+        if (!$init) {
             return $data;
         }
 
@@ -132,16 +132,16 @@ class Data extends Core
 
     }
 
-    public function send_data($full_data = false): \WP_Error|array
+    public function send_data($init = false, $type = 'cron'): \WP_Error|array
     {
 
-        $hash = $this->get_hash();
+        $hash = $this->get_hash($init);
         $headers = ['Content-Type' => 'application/json'];
 
         $data = [
-            'init' => $full_data,
             'report_hash' => $hash,
-            'site_data' => $this->get_data(($full_data))
+            'report_type' => $type,
+            'site_data' => $this->get_data(($init))
         ];
 
         $args = [
@@ -158,7 +158,7 @@ class Data extends Core
     public function get_hash($init = false): string
     {
 
-        $option_name = 'sitecare_report_id_hash';
+        $option_name = 'sitecare_report_hash';
 
         if ($init) {
             $site_url = get_site_url();
@@ -206,7 +206,6 @@ class Data extends Core
 
         return $certinfo;
     }
-
 
     public function get_admin_user_count(): int
     {

@@ -22,13 +22,12 @@ class AjaxHandler extends Data
             }
         }
 
-
         $init = false;
         if (isset($_POST['data'])) {
             $init = sanitize_key($_POST['data']['init']);
         }
 
-        $response = $this->send_data($init);
+        $response = $this->send_data($init, 'ajax');
 
         if (is_wp_error($response)) {
 

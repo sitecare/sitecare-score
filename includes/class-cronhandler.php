@@ -2,32 +2,32 @@
 
 namespace SiteCare;
 
-class CronHandler extends Core
+class CronHandler extends Data
 {
 
     public function __construct()
     {
         add_action('wp', [$this, 'schedule_daily_event']);
-        add_action('sitecare_daily_event', [$this, 'daily_task']);
+        add_action('sitecare_score_daily_event', [$this, 'daily_send_data']);
         register_deactivation_hook(SITECARE_PLUGIN_FILE, [__CLASS__, 'deactivate']);
     }
 
     public function schedule_daily_event(): void
     {
-        if (!wp_next_scheduled('sitecare_daily_event')) {
-            wp_schedule_event(time(), 'daily', 'sitecare_daily_event');
+        if (!wp_next_scheduled('sitecare_score_daily_event')) {
+            wp_schedule_event(time(), 'daily', 'sitecare_score_daily_event');
         }
     }
 
-    public function daily_task(): void
+    public function daily_send_data(): void
     {
-        $test = 1;
+        $this->send_data(true, 'cron');
     }
 
     public static function deactivate(): void
     {
-        $timestamp = wp_next_scheduled('sitecare_daily_event');
-        wp_unschedule_event($timestamp, 'sitecare_daily_event');
+        $timestamp = wp_next_scheduled('sitecare_score_daily_event');
+        wp_unschedule_event($timestamp, 'sitecare_score_daily_event');
     }
 
 }
