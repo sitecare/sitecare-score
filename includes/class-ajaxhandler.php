@@ -25,9 +25,10 @@ class AjaxHandler extends Data
         $init = false;
         if (isset($_POST['data'])) {
             $init = sanitize_key($_POST['data']['init']);
+            $hash = sanitize_key($_POST['data']['report_hash']);
         }
 
-        $response = $this->send_data($init, 'ajax');
+        $response = $this->send_data($init, $hash, 'ajax');
 
         if (is_wp_error($response)) {
 
@@ -43,6 +44,7 @@ class AjaxHandler extends Data
             wp_send_json_success([
                 'status' => $response['status'],
                 'message' => $response['message'],
+                'report_hash' => $response['report_hash'],
                 'url' => admin_url('admin.php?page=sitecare-score&action=report&report_id=' . $response['report_hash'])
             ]);
         }

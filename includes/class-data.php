@@ -132,10 +132,9 @@ class Data extends Core
 
     }
 
-    public function send_data($init = false, $type = 'cron'): \WP_Error|array
+    public function send_data($init = false, $hash = '', $type = 'cron'): \WP_Error|array
     {
 
-        $hash = $this->get_hash($init);
         $headers = ['Content-Type' => 'application/json'];
 
         $data = [
@@ -152,22 +151,6 @@ class Data extends Core
 
         $remote_api_url = $this->get_server_url() . '/api/send-wp-data';
         return wp_remote_post($remote_api_url, $args);
-
-    }
-
-    public function get_hash($init = false): string
-    {
-
-        $option_name = 'sitecare_report_hash';
-
-        if ($init) {
-            $site_url = get_site_url();
-            $current_datetime = gmdate('Y-m-d H:i:s');
-            $to_be_hashed = $site_url . $current_datetime;
-            update_option($option_name, hash('sha256', $to_be_hashed));
-        }
-
-        return get_option($option_name);
 
     }
 

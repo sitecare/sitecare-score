@@ -3,6 +3,7 @@ jQuery(document).ready(function ($) {
     console.log('getSitecareScan loaded');
 
     var isProcessing = false;
+    var hash = '';
 
     function getSitecareScan($init = false) {
 
@@ -16,7 +17,8 @@ jQuery(document).ready(function ($) {
         isProcessing = true; // Set processing flag
 
         var data = {
-            'init': $init
+            'init': $init,
+            'report_hash': hash
         };
 
         $.ajax({
@@ -31,6 +33,8 @@ jQuery(document).ready(function ($) {
                 console.log("Operation succeeded:", response);
                 console.log("Status:", response.data.status);
                 isProcessing = false;
+                hash = response.data.report_hash;
+                console.log("Hash:", hash);
                 if ('processing' === response.data.status) {
                     $('#status-text').text(response.data.message);
                     setTimeout(getSitecareScan, 1500);
