@@ -41,11 +41,21 @@ class AjaxHandler extends Data
 
             $response = json_decode(wp_remote_retrieve_body($response), true);
 
+            $report_url = admin_url('admin.php?page=sitecare-score&action=report&report_id=' . $response['report_hash']);
+
+            if ('complete' == $response['status']) {
+                $this->set_latest_report(
+                    $response['report_hash'],
+                    $response['score'],
+                    $response['color']
+                );
+            }
+
             wp_send_json_success([
                 'status' => $response['status'],
                 'message' => $response['message'],
                 'report_hash' => $response['report_hash'],
-                'url' => admin_url('admin.php?page=sitecare-score&action=report&report_id=' . $response['report_hash'])
+                'url' => $report_url
             ]);
         }
 

@@ -22,7 +22,7 @@ class Scan
             'email' => sanitize_email($_REQUEST['email']),
         ];
 
-        update_option('sitecare_scan_settings', $settings);
+        update_option('sitecare_score_settings', $settings);
 
         ?>
 

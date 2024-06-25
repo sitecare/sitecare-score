@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
 
-    console.log('getSitecareScan loaded');
+    // console.log('getSitecareScan loaded');
 
     var isProcessing = false;
     var hash = '';
@@ -8,11 +8,11 @@ jQuery(document).ready(function ($) {
     function getSitecareScan($init = false) {
 
         if (isProcessing) {
-            console.log('Request already in process.');
+            // console.log('Request already in process.');
             return;
         }
 
-        console.log('getSitecareScan called');
+        // console.log('getSitecareScan called');
 
         isProcessing = true; // Set processing flag
 
@@ -30,11 +30,11 @@ jQuery(document).ready(function ($) {
                 data: data
             },
             success: function (response) {
-                console.log("Operation succeeded:", response);
-                console.log("Status:", response.data.status);
+                // console.log("Operation succeeded:", response);
+                // console.log("Status:", response.data.status);
                 isProcessing = false;
                 hash = response.data.report_hash;
-                console.log("Hash:", hash);
+                // console.log("Hash:", hash);
                 if ('processing' === response.data.status) {
                     $('#status-text').text(response.data.message);
                     setTimeout(getSitecareScan, 1500);

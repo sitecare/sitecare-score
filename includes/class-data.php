@@ -9,8 +9,8 @@ class Data extends Core
 
         global $wpdb, $wp_version;
 
-        $settings = get_option('sitecare_scan_settings');
-        delete_option('sitecare_scan_settings');
+        $settings = get_option('sitecare_score_settings');
+        delete_option('sitecare_score_settings');
 
         $data = ['url' => get_site_url()];
 
@@ -151,6 +151,22 @@ class Data extends Core
 
         $remote_api_url = $this->get_server_url() . '/api/send-wp-data';
         return wp_remote_post($remote_api_url, $args);
+
+    }
+
+    public function set_latest_report($hash, $score, $color)
+    {
+
+        $report_url = admin_url('admin.php?page=sitecare-score&action=report&report_id=' . $hash);
+
+        $latest_report = [
+            'hash' => $hash,
+            'report_url' => $report_url,
+            'score' => $score,
+            'color' => $color,
+        ];
+
+        update_option('sitecare_score_latest_report', $latest_report);
 
     }
 

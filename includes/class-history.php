@@ -2,7 +2,7 @@
 
 namespace Sitecare;
 
-class History extends Core
+class History extends Data
 {
 
     public function __construct()
@@ -51,6 +51,12 @@ class History extends Core
         $history = $this->get_history();
         $body = json_decode($history['body']);
         echo wp_kses($body->html, $allowed_tags);
+
+        $this->set_latest_report(
+            $body->latest->report_hash,
+            $body->latest->score,
+            $body->latest->color
+        );
 
         $this->display_footer();
 
