@@ -7,13 +7,23 @@ class History extends Data
 
     public function __construct()
     {
-        add_action('admin_enqueue_scripts', [$this, 'admin_enqueue']);
+        // add_action('admin_enqueue_scripts', [$this, 'admin_enqueue']);
     }
 
     public function init(): void
     {
 
         $this->display_header();
+
+        $history = $this->get_history();
+        $data = json_decode($history['body']);
+        $items = $data->data;
+
+        $this->set_latest_report(
+            $data->latest->report_hash,
+            $data->latest->score,
+            $data->latest->color
+        );
 
         ?>
 
@@ -29,17 +39,68 @@ class History extends Data
             </div>
         </div>
 
+        <table class="sitecare-history">
+            <thead>
+            <tr>
+                <th>Score</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Link</th>
+            </tr>
+            </thead>
+            <tbody id="history-body">
+
+            <?php foreach ($items as $item) {
+
+                $test = 1;
+                $dt = new \DateTime($item->local_datetime);
+
+                $report_type = 'Automatic';
+                if ('ajax' == $item->report_type) {
+                    $report_type = 'On Demand';
+                }
+
+                $report_url = admin_url('admin.php?page=sitecare-score&action=report&report_id=' . $item->hash);
+
+                $score_style = 'background:' . $item->bgcolor . ';';
+                $score_style .= 'border-color:' . $item->color . ';';
+                $score_style .= 'border-left-color:' . $item->color;
+
+                ?>
+
+                <tr>
+                    <td>
+                        <div class="score" style="<?php echo $score_style; ?>"><?php echo $item->score; ?>
+                            - <?php echo $item->label; ?></div>
+                    </td>
+                    <td>
+                        <div class="sitecare-score-date score-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="14">
+                                <path fill="#0D0E0F"
+                                      d="M4.656.656A.655.655 0 0 0 4 0a.655.655 0 0 0-.656.656V1.75H2.25C1.285 1.75.5 2.535.5 3.5v8.75c0 .965.785 1.75 1.75 1.75H11c.965 0 1.75-.785 1.75-1.75V3.5c0-.965-.785-1.75-1.75-1.75H9.906V.656A.655.655 0 0 0 9.25 0a.655.655 0 0 0-.656.656V1.75H4.656V.656ZM1.813 5.25h9.624v7c0 .24-.196.438-.437.438H2.25a.439.439 0 0 1-.438-.438v-7Z"></path>
+                            </svg>
+                            <div class="date"><?php echo $dt->format('M d, Y'); ?></div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14">
+                                <path fill="#0D0E0F"
+                                      d="M13.438 7A5.688 5.688 0 1 1 2.062 7a5.688 5.688 0 0 1 11.376 0ZM.75 7a7 7 0 1 0 14 0 7 7 0 0 0-14 0Zm6.344-3.719V7c0 .219.11.424.292.547l2.625 1.75c.301.202.709.12.91-.183a.654.654 0 0 0-.182-.91L8.406 6.65V3.281a.655.655 0 0 0-.656-.656.655.655 0 0 0-.656.656Z"></path>
+                            </svg>
+                            <div class="time"><?php echo $dt->format('H:i A'); ?></div>
+                        </div>
+                    </td>
+                    <td><?php echo $report_type; ?></td>
+                    <td>
+                        <a href="<?php echo $report_url; ?>"
+                           class="view-report">
+                            <div class="link-text">View Report</div>
+                        </a></td>
+                </tr>
+
+            <?php } ?>
+
+            </tbody>
+        </table>
+
         <?php
-
-        $history = $this->get_history();
-        $body = json_decode($history['body']);
-        echo wp_kses($body->html, $this->get_allowed_tags());
-
-        $this->set_latest_report(
-            $body->latest->report_hash,
-            $body->latest->score,
-            $body->latest->color
-        );
 
         $this->display_footer();
 
@@ -49,7 +110,7 @@ class History extends Data
     {
 
         $wp_admin_url = 'admin.php?page=sitecare-score';
-        $remote_api_url = $this->get_server_url() . '/api/get-history';
+        $remote_api_url = $this->get_server_url() . '/api/get-history-data';
 
         $headers = ['Content-Type' => 'application/json'];
 
