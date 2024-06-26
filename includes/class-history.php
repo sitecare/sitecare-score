@@ -25,6 +25,15 @@ class History extends Data
             $data->latest->color
         );
 
+        $this->history_header();
+        $this->history_chart($items);
+        $this->history_table($items);
+
+    }
+
+    public function history_header(): void
+    {
+
         ?>
 
         <div class="headline history-headline">
@@ -38,6 +47,71 @@ class History extends Data
                 <?php esc_html_e('Score History', 'sitecare-score') ?>
             </div>
         </div>
+
+        <?php
+
+    }
+
+    public function history_chart($items): void
+    {
+
+        $labels = '[';
+        $data = '[';
+
+        $first = true;
+        $current_score = '-1';
+
+        foreach (array_reverse($items) as $item) {
+
+            if ($current_score == $item->score) {
+                continue;
+            }
+
+            if (!$first) {
+                $labels .= ',';
+                $data .= ',';
+            }
+
+            $dt = new \DateTime($item->local_datetime);
+            $labels .= "'" . $dt->format('m/d/y') . "'";
+            $data .= "'" . $item->score . "'";
+
+            $first = false;
+            $current_score = $item->score;
+
+        }
+
+        $labels .= ']';
+        $data .= ']';
+
+        ?>
+
+        <canvas id="historyLineChart" height="200" aria-label="History Line Chart" role="img"></canvas>
+
+        <script>
+            var ctx = document.getElementById('historyLineChart').getContext('2d');
+            var historyLineChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: <?php print_r($labels); ?>,
+                    datasets: [{
+                        label: 'SiteCare Score',
+                        data: <?php print_r($data); ?>,
+                        fill: false,
+                        tension: 0.1
+                    }]
+                }
+            });
+        </script>
+
+        <?php
+
+    }
+
+    public function history_table($items): void
+    {
+
+        ?>
 
         <table class="sitecare-history">
             <thead>
@@ -143,6 +217,13 @@ class History extends Data
         }
 
         $this->enqueue_sitecare_styles();
+
+        wp_enqueue_script(
+            'chartjs',
+            'https://cdn.jsdelivr.net/npm/chart.js',
+            [],
+            $this->get_current_plugin_version()
+        );
 
     }
 
