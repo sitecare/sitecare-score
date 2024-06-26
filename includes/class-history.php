@@ -84,6 +84,13 @@ class History extends Data
 
         $this->enqueue_sitecare_styles();
 
+        wp_enqueue_script(
+            'chartjs',
+            'https://cdn.jsdelivr.net/npm/chart.js',
+            [],
+            $this->get_current_plugin_version()
+        );
+
     }
 
 }

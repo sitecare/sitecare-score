@@ -70,7 +70,7 @@ class Dashboard extends Core
             $path = plugin_dir_url(__FILE__) . 'assets/sitecare-start.js';
 
             wp_enqueue_script(
-                'sitecare-start-script',
+                'sitecare-start',
                 $path,
                 ['jquery'],
                 $this->get_current_plugin_version(),
