@@ -1,6 +1,6 @@
 <?php
 
-namespace Sitecare;
+namespace SiteCare;
 
 class History extends Data
 {
@@ -101,7 +101,7 @@ class History extends Data
         $css_url = $this->get_server_url() . '/css/sitecare-score.css';
 
         wp_enqueue_style(
-            'sitecare-history',
+            'sitecare-score',
             $css_url,
             false,
             $this->get_current_plugin_version()

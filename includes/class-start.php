@@ -1,6 +1,6 @@
 <?php
 
-namespace Sitecare;
+namespace SiteCare;
 
 class Start
 {
