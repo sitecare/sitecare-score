@@ -12,7 +12,6 @@ class Score extends Core
     {
 
         add_action('admin_menu', [$this, 'plugin_menu']);
-        add_action('admin_enqueue_scripts', [$this, 'admin_enqueue_scripts']);
         add_action('in_admin_header', [$this, 'hide_admin_notices'], 99);
 
         new AjaxHandler();
@@ -21,66 +20,6 @@ class Score extends Core
 
         $this->dashboard = new Dashboard();
         $this->history = new History();
-
-    }
-
-    public function admin_enqueue_scripts(): void
-    {
-
-        $screen = get_current_screen();
-
-        if ((!str_contains($screen->id, 'sitecare-score')) && (!str_contains($screen->id, 'sitecare-history'))) {
-            return;
-        }
-
-        $ver = $this->get_current_plugin_version();
-
-        // Internal styles
-
-        wp_enqueue_style(
-            'sitecare-admin-css',
-            plugin_dir_url(__FILE__) . 'assets/sitecare-style.css',
-            false,
-            $ver
-        );
-
-        // External styles
-
-        $css_url = $this->get_server_url() . '/css/sitecare-score.css';
-
-        wp_enqueue_style(
-            'sitecare-score',
-            $css_url,
-            false,
-            $ver
-        );
-
-        if (!str_contains($screen->id, 'sitecare-score')) {
-            return;
-        }
-
-        if (isset($_REQUEST['_wpnonce'])) {
-            $nonce = sanitize_text_field($_REQUEST['_wpnonce']);
-            if (!wp_verify_nonce($nonce, 'sitecare_nonce')) {
-                return;
-            }
-        }
-
-        if (empty($this->get_action())) {
-
-            // Add start script
-
-            $path = plugin_dir_url(__FILE__) . 'assets/sitecare-start.js';
-
-            wp_enqueue_script(
-                'sitecare-start-script',
-                $path,
-                ['jquery'],
-                $ver,
-                true
-            );
-
-        }
 
     }
 

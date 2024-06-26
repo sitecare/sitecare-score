@@ -9,6 +9,8 @@ class Dashboard extends Core
 
     public function __construct()
     {
+        add_action('admin_enqueue_scripts', [$this, 'admin_enqueue']);
+
         $this->start = new Start();
         $this->scan = new Scan();
         $this->report = new Report();
@@ -43,5 +45,40 @@ class Dashboard extends Core
 
     }
 
+    public function admin_enqueue(): void
+    {
+
+        $screen = get_current_screen();
+
+        if (!str_contains($screen->id, 'sitecare-score')) {
+            return;
+        }
+
+        $this->enqueue_sitecare_styles();
+
+//        if (isset($_REQUEST['_wpnonce'])) {
+//            $nonce = sanitize_text_field($_REQUEST['_wpnonce']);
+//            if (!wp_verify_nonce($nonce, 'sitecare_nonce')) {
+//                return;
+//            }
+//        }
+
+        if (empty($this->get_action())) {
+
+            // Add start script
+
+            $path = plugin_dir_url(__FILE__) . 'assets/sitecare-start.js';
+
+            wp_enqueue_script(
+                'sitecare-start-script',
+                $path,
+                ['jquery'],
+                $this->get_current_plugin_version(),
+                true
+            );
+
+        }
+
+    }
 
 }

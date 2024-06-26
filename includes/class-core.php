@@ -139,4 +139,31 @@ class Core
 
     }
 
+    public function enqueue_sitecare_styles(): void
+    {
+
+        $ver = $this->get_current_plugin_version();
+
+        // Internal styles
+
+        wp_enqueue_style(
+            'sitecare-admin-css',
+            plugin_dir_url(__FILE__) . 'assets/sitecare-style.css',
+            false,
+            $ver
+        );
+
+        // External styles
+
+        $css_url = $this->get_server_url() . '/css/sitecare-score.css';
+
+        wp_enqueue_style(
+            'sitecare-score',
+            $css_url,
+            false,
+            $ver
+        );
+
+    }
+
 }
