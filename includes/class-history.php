@@ -7,7 +7,7 @@ class History extends Data
 
     public function __construct()
     {
-        // add_action('admin_enqueue_scripts', [$this, 'admin_enqueue']);
+        add_action('admin_enqueue_scripts', [$this, 'admin_enqueue']);
     }
 
     public function init(): void
@@ -52,7 +52,6 @@ class History extends Data
 
             <?php foreach ($items as $item) {
 
-                $test = 1;
                 $dt = new \DateTime($item->local_datetime);
 
                 $report_type = 'Automatic';
@@ -144,13 +143,6 @@ class History extends Data
         }
 
         $this->enqueue_sitecare_styles();
-
-        wp_enqueue_script(
-            'chartjs',
-            'https://cdn.jsdelivr.net/npm/chart.js',
-            [],
-            $this->get_current_plugin_version()
-        );
 
     }
 
