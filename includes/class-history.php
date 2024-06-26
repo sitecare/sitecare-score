@@ -7,7 +7,6 @@ class History extends Data
 
     public function __construct()
     {
-        add_action('admin_enqueue_scripts', [$this, 'admin_enqueue_scripts']);
     }
 
     public function init(): void
@@ -86,26 +85,6 @@ class History extends Data
         $response = wp_remote_post($remote_api_url, $args);
 
         return $response;
-
-    }
-
-    public function admin_enqueue_scripts(): void
-    {
-
-        $screen = get_current_screen();
-
-        if (!str_contains($screen->id, 'sitecare-history')) {
-            return;
-        }
-
-        $css_url = $this->get_server_url() . '/css/sitecare-score.css';
-
-        wp_enqueue_style(
-            'sitecare-score',
-            $css_url,
-            false,
-            $this->get_current_plugin_version()
-        );
 
     }
 

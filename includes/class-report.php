@@ -93,7 +93,6 @@ class Report extends Core
     public function admin_enqueue_scripts(): void
     {
 
-        $test = 1;
         $screen = get_current_screen();
 
         if (!str_contains($screen->id, 'sitecare-score')) {
@@ -103,15 +102,6 @@ class Report extends Core
         if ('report' != $this->get_action()) {
             return;
         }
-
-        $css_url = $this->get_server_url() . '/css/sitecare-score.css';
-
-        wp_enqueue_style(
-            'sitecare-report',
-            $css_url,
-            false,
-            $this->get_current_plugin_version()
-        );
 
         $js_url = $this->get_server_url() . '/js/sitecare-report.js';
 

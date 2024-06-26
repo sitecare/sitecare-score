@@ -29,14 +29,13 @@ class Score extends Core
 
         $screen = get_current_screen();
 
-        if (!str_contains($screen->id, 'sitecare-score')) {
+        if ((!str_contains($screen->id, 'sitecare-score')) && (!str_contains($screen->id, 'sitecare-history'))) {
             return;
         }
 
-        // Hide notices
-        echo "<style>.update-nag, .updated, .error, .is-dismissible { display: none; }</style>\n";
-
         $ver = $this->get_current_plugin_version();
+
+        // Internal styles
 
         wp_enqueue_style(
             'sitecare-admin-css',
@@ -44,6 +43,21 @@ class Score extends Core
             false,
             $ver
         );
+
+        // External styles
+
+        $css_url = $this->get_server_url() . '/css/sitecare-score.css';
+
+        wp_enqueue_style(
+            'sitecare-score',
+            $css_url,
+            false,
+            $ver
+        );
+
+        if (!str_contains($screen->id, 'sitecare-score')) {
+            return;
+        }
 
         if (isset($_REQUEST['_wpnonce'])) {
             $nonce = sanitize_text_field($_REQUEST['_wpnonce']);
