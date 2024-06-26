@@ -21,7 +21,16 @@ class CronHandler extends Data
 
     public function daily_send_data(): void
     {
-        $this->send_data(true, 'cron');
+        $response = $this->send_data(true, '', 'cron');
+        $response = json_decode(wp_remote_retrieve_body($response), true);
+
+        if ('complete' == $response['status']) {
+            $this->set_latest_report(
+                $response['report_hash'],
+                $response['score'],
+                $response['color']
+            );
+        }
     }
 
     public static function deactivate(): void
