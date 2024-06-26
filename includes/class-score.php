@@ -33,6 +33,9 @@ class Score extends Core
             return;
         }
 
+        // Hide notices
+        echo "<style>.update-nag, .updated, .error, .is-dismissible { display: none; }</style>\n";
+
         $ver = $this->get_current_plugin_version();
 
         wp_enqueue_style(
