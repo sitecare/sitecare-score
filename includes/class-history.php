@@ -86,7 +86,7 @@ class History extends Data
 
         ?>
 
-        <canvas id="historyLineChart" height="200" aria-label="History Line Chart" role="img"></canvas>
+        <canvas id="historyLineChart" height="220" aria-label="History Line Chart" role="img"></canvas>
 
         <script>
             var ctx = document.getElementById('historyLineChart').getContext('2d');
