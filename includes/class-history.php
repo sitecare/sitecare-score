@@ -23,7 +23,8 @@ class History extends Data
             $data->latest->report_hash,
             $data->latest->score,
             $data->latest->color,
-            $data->latest->change
+            $data->latest->change,
+            $data->latest->issues
         );
 
         $this->history_header();

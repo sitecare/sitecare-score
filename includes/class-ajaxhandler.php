@@ -48,7 +48,8 @@ class AjaxHandler extends Data
                     $response['report_hash'],
                     $response['score'],
                     $response['color'],
-                    $response['change']
+                    $response['change'],
+                    $response['issues']
                 );
             }
 

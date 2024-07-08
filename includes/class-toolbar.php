@@ -80,15 +80,6 @@ class ToolBar extends Core
             ]
         );
 
-//        $wp_admin_bar->add_node(
-//            array(
-//                'parent' => 'sitecare-score-adminmenu',
-//                'id' => 'sitecare-score-history',
-//                'title' => 'Score History',
-//                'href' => esc_url(admin_url('admin.php?page=sitecare-history')),
-//            )
-//        );
-
     }
 
     public function generate_svg_circle($score, $color): string
@@ -110,6 +101,5 @@ class ToolBar extends Core
             </svg>
         </div>";
     }
-
 
 }
