@@ -626,13 +626,15 @@
 
 .sitecare-score-toolbar {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .sitecare-score-toolbar .score-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
 }
 
 .sitecare-score-toolbar .score-circle {

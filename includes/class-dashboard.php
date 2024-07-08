@@ -48,13 +48,13 @@ class Dashboard extends Core
     public function admin_enqueue(): void
     {
 
+        $this->enqueue_sitecare_styles();
+
         $screen = get_current_screen();
 
         if (!str_contains($screen->id, 'sitecare-score')) {
             return;
         }
-
-        $this->enqueue_sitecare_styles();
 
 //        if (isset($_REQUEST['_wpnonce'])) {
 //            $nonce = sanitize_text_field($_REQUEST['_wpnonce']);

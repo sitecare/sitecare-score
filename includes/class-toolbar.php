@@ -41,35 +41,35 @@ class ToolBar extends Core
 
         $latest_url = admin_url('admin.php?page=sitecare-score&action=report&report_id=' . $settings['hash']);
 
-        $info = '<div class="sitecare-score-toolbar">';
-
-        // Score
-        $info .= '<div class="score-container">';
-        $info .= '<div class="score-circle" style="border-color: ' . $settings['color'] . '">';
-        $info .= '<div class="score"><div class="score-number" style="color: ' . $settings['color'] . ';">';
-        $info .= $settings['score'];
-        $info .= '</div>';
-
+        // Score Circle
+        $score_circle = '<div class="score-container">';
+        $score_circle .= '<div class="score-circle" style="border-color: ' . $settings['color'] . '">';
+        $score_circle .= '<div class="score"><div class="score-number" style="color: ' . $settings['color'] . ';">';
+        $score_circle .= $settings['score'];
+        $score_circle .= '</div>';
         if (!empty($settings['change'])) {
-            $info .= '<div class="score-arrow">';
-            $info .= '<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><polygon points="' . $points . '" fill="' . $settings['color'] . '"/></svg>';
-            $info .= '</div>';
+            $score_circle .= '<div class="score-arrow">';
+            $score_circle .= '<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><polygon points="' . $points . '" fill="' . $settings['color'] . '"/></svg>';
+            $score_circle .= '</div>';
         }
-
-        $info .= '</div>';
-        $info .= '</div>';
+        $score_circle .= '</div>';
+        $score_circle .= '</div>';
+        $score_circle .= '</div>';
 
         // Links
-        $info .= '<div class="links">';
+        $links = '<div class="links">';
+        $links .= '<div class="latest">';
+        $links .= '<a href="' . esc_url($latest_url) . '">View Latest Report</a>';
+        $links .= '</div>';
+        $links .= '<div class="history">';
+        $links .= '<a href="' . esc_url(admin_url('admin.php?page=sitecare-history')) . '">View Score History</a>';
+        $links .= '</div>';
+        $links .= '</div>';
 
-        $info .= '<div class="latest">';
-        $info .= '<a href="' . esc_url($latest_url) . '">View Latest Report</a>';
-        $info .= '</div>';
-
-        $info .= '<div class="history">';
-        $info .= '<a href="' . esc_url(admin_url('admin.php?page=sitecare-history')) . '">View Score History</a>';
-        $info .= '</div>';
-
+        // Info
+        $info = '<div class="sitecare-score-toolbar">';
+        $info .= $score_circle;
+        $info .= $links;
         $info .= '</div>';
 
         $wp_admin_bar->add_node(
@@ -80,26 +80,6 @@ class ToolBar extends Core
             ]
         );
 
-    }
-
-    public function generate_svg_circle($score, $color): string
-    {
-        $radius = 44;
-        $strokeWidth = 12;
-        $circumference = 2 * M_PI * $radius;
-        $dashArray = $circumference;
-        $dashOffset = $circumference * (1 - $score / 100);
-
-        return "
-        <div class='score-svg'>
-            <svg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
-                <circle cx='50' cy='50' r='$radius' fill='none' stroke='#e7e7e7' stroke-width='$strokeWidth' />
-                <circle cx='50' cy='50' r='$radius' fill='none' stroke='$color' stroke-width='$strokeWidth'
-                    stroke-linecap='round' transform='rotate(-90 50 50)'
-                    stroke-dasharray='$dashArray' stroke-dashoffset='$dashOffset' />
-                        <text x='50%' y='55%' text-anchor='middle' dominant-baseline='middle' fill='black' font-size='42'  font-weight='bold'>$score</text>
-            </svg>
-        </div>";
     }
 
 }

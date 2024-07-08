@@ -17,6 +17,7 @@ class Score extends Core
         new AjaxHandler();
         new CronHandler();
         new ToolBar();
+        new Widget();
 
         $this->dashboard = new Dashboard();
         $this->history = new History();
