@@ -618,29 +618,71 @@
     margin-left: 4px;
 }
 
+/* Dashboard Widget */
+
+.sitecare-score-dashboard-widget {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-auto-rows: minmax(64px, auto);
+    column-gap: 16px;
+    align-items: center;
+    justify-content: start;
+}
+
+.sitecare-score-dashboard-widget .sitecare-score-dashboard-widget,
+.sitecare-score-dashboard-widget .score-container,
+.sitecare-score-dashboard-widget .score,
+.sitecare-score-dashboard-widget .score-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sitecare-score-dashboard-widget .score {
+    gap: 4px;
+}
+
+.sitecare-score-dashboard-widget .score-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-width: 6px;
+    border-style: solid;
+    border-radius: 50% !important;
+    width: 100px !important;
+    height: 100px !important;
+}
+
+.sitecare-score-dashboard-widget .score .score-number {
+    font-size: 40px !important;
+}
+
+.sitecare-score-dashboard-widget .issues ul {
+    list-style: disc;
+    padding-left: 1em;
+}
+
+
 /* Toolbar */
 
 #wp-admin-bar-sitecare-score-adminmenu .ab-item {
     height: auto !important;
 }
 
-.sitecare-score-toolbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.sitecare-score-toolbar .score-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+.sitecare-score-toolbar .sitecare-score-toolbar,
+.sitecare-score-toolbar .score-container,
+.sitecare-score-toolbar .score,
 .sitecare-score-toolbar .score-circle {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.sitecare-score-toolbar {
+    gap: 10px;
+}
+
+.sitecare-score-toolbar .score-circle {
     border-width: 4px;
     border-style: solid;
     border-radius: 50% !important;
@@ -648,20 +690,11 @@
     height: 45px !important;
 }
 
-.sitecare-score-toolbar .score {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .sitecare-score-toolbar .score .score-number {
     font-size: 18px !important;
 }
 
 .sitecare-score-toolbar .score-arrow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding-left: 2px !important;
 }
 

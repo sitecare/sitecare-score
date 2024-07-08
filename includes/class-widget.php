@@ -25,45 +25,51 @@ class Widget extends Core
         $settings = get_option('sitecare_score_latest_report');
 
         if ('increase' == $settings['change']) {
-            $points = '3,0 6,6 0,6';
+            $points = '6,0 12,12 0,12';
         } else if ('decrease' == $settings['change']) {
-            $points = '0,0 6,0 3,6';
+            $points = '0,0 12,0 6,12';
         }
 
         $latest_url = admin_url('admin.php?page=sitecare-score&action=report&report_id=' . $settings['hash']);
 
-        $info = '<div class="sitecare-score-dashboard-widget">';
-
-        // Score
-        $info .= '<div class="score-container">';
-        $info .= '<div class="score-circle" style="border-color: ' . $settings['color'] . '">';
-        $info .= '<div class="score"><div class="score-number" style="color: ' . $settings['color'] . ';">';
-        $info .= $settings['score'];
-        $info .= '</div>';
-
+        // Score Circle
+        $score_circle = '<div class="score-container">';
+        $score_circle .= '<div class="score-circle" style="border-color: ' . $settings['color'] . '">';
+        $score_circle .= '<div class="score"><div class="score-number" style="color: ' . $settings['color'] . ';">';
+        $score_circle .= $settings['score'];
+        $score_circle .= '</div>';
         if (!empty($settings['change'])) {
-            $info .= '<div class="score-arrow">';
-            $info .= '<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><polygon points="' . $points . '" fill="' . $settings['color'] . '"/></svg>';
-            $info .= '</div>';
+            $score_circle .= '<div class="score-arrow">';
+            $score_circle .= '<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg"><polygon points="' . $points . '" fill="' . $settings['color'] . '"/></svg>';
+            $score_circle .= '</div>';
+        }
+        $score_circle .= '</div>';
+        $score_circle .= '</div>';
+        $score_circle .= '</div>';
+
+        // Issues
+        $issues = '<div class="issues">';
+        $issues .= '<h3>Top Issues:</h3>';
+        if (!empty($settings['issues'])) {
+            $issues .= '<ul>';
+            foreach ($settings['issues'] as $issue) {
+                $issues .= '<li>' . $issue . '</li>';
+            }
+            $issues .= '</ul>';
         }
 
-        $info .= '</div>';
-        $info .= '</div>';
+        $issues .= '<a href="' . esc_url($latest_url) . '">View Latest Report</a>';
 
-        // Links
-        $info .= '<div class="links">';
+        $issues .= '</div>';
 
-        $info .= '<div class="latest">';
-        $info .= '<a href="' . esc_url($latest_url) . '">View Latest Report</a>';
-        $info .= '</div>';
-
-        $info .= '<div class="history">';
-        $info .= '<a href="' . esc_url(admin_url('admin.php?page=sitecare-history')) . '">View Score History</a>';
+        // Info
+        $info = '<div class="sitecare-score-dashboard-widget">';
+        $info .= $score_circle;
+        $info .= $issues;
         $info .= '</div>';
 
-        $info .= '</div>';
+        echo $info;
 
-        echo 'xyz';
 
     }
 
