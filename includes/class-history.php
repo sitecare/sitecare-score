@@ -103,6 +103,13 @@ class History extends Data
                         borderColor: 'rgba(1, 98, 255, 1)',
                         backgroundColor: 'rgba(1, 98, 255, 1)'
                     }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                    },
                 }
             });
         </script>
