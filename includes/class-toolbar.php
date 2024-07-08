@@ -2,15 +2,15 @@
 
 namespace SiteCare;
 
-class MenuBar extends Core
+class ToolBar extends Core
 {
 
     public function __construct()
     {
-        add_action('admin_bar_menu', [$this, 'add_admin_bar'], 50);
+        add_action('admin_bar_menu', [$this, 'add_admin_bar'], 100);
     }
 
-    public function add_admin_bar($admin_bar): void
+    public function add_admin_bar($wp_admin_bar): void
     {
 
         $settings = get_option('sitecare_score_latest_report');
@@ -21,8 +21,8 @@ class MenuBar extends Core
 
         $title = $sitecare_icon . $circle_icon;
 
-        $admin_bar->add_menu(
-            array(
+        $wp_admin_bar->add_menu(
+            [
                 'id' => 'sitecare-score-adminmenu',
                 'title' => $title,
                 'href' => esc_url($settings['report_url']),
@@ -30,36 +30,69 @@ class MenuBar extends Core
                     'class' => 'sitecare-score-adminmenu-class',
                     'title' => 'SiteCare Score',
                 ],
-            )
+            ]
         );
 
-        //        $admin_bar->add_node(
-        //            array(
-        //                'parent' => 'sitecare-score-adminmenu',
-        //                'id' => 'sitecare-score-latest',
-        //                'title' => 'View Latest Report',
-        //                'href' => esc_url(admin_url($latest_url)),
-        //            )
-        //        );
+        $percentage = 80;
+        $color = (100 == $percentage) ? 'red' : (($percentage > 80) ? 'orange' : 'green');
+        $size = 'KB';
+        $files = '99';
 
-        //        $admin_bar->add_node(
-        //            array(
-        //                'parent' => 'sitecare-score-adminmenu',
-        //                'id' => 'sitecare-score-scan',
-        //                'title' => 'Scan My Site',
-        //                'href' => esc_url(admin_url('admin.php?page=sitecare-score')),
-        //            )
-        //        );
+        $latest_url = admin_url('admin.php?page=sitecare-score&action=report&report_id=' . $settings['hash']);
 
-        //        $admin_bar->add_node(
-        //            array(
-        //                'parent' => 'sitecare-score-adminmenu',
-        //                'id' => 'sitecare-score-history',
-        //                'title' => 'Score History',
-        //                'href' => esc_url(admin_url('admin.php?page=sitecare-history')),
-        //            )
-        //        );
+        $info = '<div class="sitecare-score-toolbar">';
 
+        // Score
+        $info .= '<div class="score-container">';
+        $info .= '<div class="score" style="color: ' . $settings['color'] . ';border-color: ' . $settings['color'] . '">';
+        $info .= $settings['score'];
+        $info .= '</div>';
+        $info .= '</div>';
+
+        // Links
+        $info .= '<table class="links-container">';
+
+        $info .= '<tr class="latest"><td>';
+        $info .= '<a href="' . esc_url($latest_url) . '">View Latest Report</a>';
+        $info .= '</td></tr>';
+
+        $info .= '<tr class="history"><td>';
+        $info .= '<a href="' . esc_url(admin_url('admin.php?page=sitecare-history')) . '">View Score History</a>';
+        $info .= '</td></tr>';
+
+        $info .= '</table>';
+
+
+        $info .= '</div>';
+
+        $wp_admin_bar->add_node(
+            [
+                'parent' => 'sitecare-score-adminmenu',
+                'id' => 'sitecare-cache-info',
+                'title' => $info,
+            ]
+        );
+
+    }
+
+    public function generate_svg_circle($score, $color): string
+    {
+        $radius = 44;
+        $strokeWidth = 12;
+        $circumference = 2 * M_PI * $radius;
+        $dashArray = $circumference;
+        $dashOffset = $circumference * (1 - $score / 100);
+
+        return "
+        <div class='score-svg'>
+            <svg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
+                <circle cx='50' cy='50' r='$radius' fill='none' stroke='#e7e7e7' stroke-width='$strokeWidth' />
+                <circle cx='50' cy='50' r='$radius' fill='none' stroke='$color' stroke-width='$strokeWidth'
+                    stroke-linecap='round' transform='rotate(-90 50 50)'
+                    stroke-dasharray='$dashArray' stroke-dashoffset='$dashOffset' />
+                        <text x='50%' y='55%' text-anchor='middle' dominant-baseline='middle' fill='black' font-size='42'  font-weight='bold'>$score</text>
+            </svg>
+        </div>";
     }
 
 

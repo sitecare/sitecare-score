@@ -608,3 +608,34 @@
 .sitecare-score-date .time {
     margin-left: 4px;
 }
+
+/* Toolbar */
+
+.sitecare-score-toolbar {
+}
+
+.sitecare-score-toolbar .score-container {
+    display: inline-block !important;
+}
+
+.sitecare-score-toolbar .score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-width: 4px;
+    border-style: solid;
+    border-radius: 50% !important;
+    width: 35px !important;
+    height: 35px !important;
+}
+
+.sitecare-score-toolbar .links-container {
+    display: inline-block !important;
+    margin-left: 10px !important;
+}
+
+.sitecare-score-toolbar .links-container a {
+    height: auto !important;
+    padding: 0 !important;
+    line-height: 2 !important;
+}

@@ -21,7 +21,7 @@ class CronHandler extends Data
 
     public function daily_send_data(): void
     {
-        $response = $this->send_data(true, '', 'cron');
+        $response = $this->send_data(true);
         $response = json_decode(wp_remote_retrieve_body($response), true);
 
         if ('complete' == $response['status']) {

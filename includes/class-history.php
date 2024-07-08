@@ -98,7 +98,9 @@ class History extends Data
                         label: 'SiteCare Score',
                         data: <?php print_r($data); ?>,
                         fill: false,
-                        tension: 0.1
+                        tension: 0.1,
+                        borderColor: 'rgba(1, 98, 255, 1)',
+                        backgroundColor: 'rgba(1, 98, 255, 1)'
                     }]
                 }
             });
