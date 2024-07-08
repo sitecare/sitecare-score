@@ -253,6 +253,15 @@
     margin-bottom: 20px;
 }
 
+.sitecare-report .sitecare-report-limit {
+    padding: 1em 1.5em;
+    text-align: center;
+    border-radius: 12px;
+    border: 1px solid #F0F0F0;
+    box-shadow: 0 4px 40px 0 #00000005;
+    margin-bottom: 20px;
+}
+
 .sitecare-report .content {
     font-size: 14px;
 }

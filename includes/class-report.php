@@ -22,11 +22,21 @@ class Report extends Core
         $report_data = $data->data;
         $items = json_decode($report_data->score_data);
 
+        $report_limit_current = $data->report_limit->current;
+        $report_limit_max = $data->report_limit->max;
+
         $dt = new \DateTime($report_data->local_datetime);
 
         ?>
 
         <div class="sitecare-report">
+
+            <?php if (!empty($data->report_limit_message)) { ?>
+                <div class="sitecare-report-limit">
+                    <?php echo $data->report_limit_message; ?>
+                </div>
+            <?php } ?>
+
             <div class="sitecare-report-summary">
                 <div class="content">
                     <div class="headline">SiteCare Score</div>
