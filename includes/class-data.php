@@ -154,7 +154,7 @@ class Data extends Core
 
     }
 
-    public function set_latest_report($hash, $score, $color)
+    public function set_latest_report($hash, $score, $color, $change)
     {
 
         $report_url = admin_url('admin.php?page=sitecare-score&action=report&report_id=' . $hash);
@@ -164,6 +164,7 @@ class Data extends Core
             'report_url' => $report_url,
             'score' => $score,
             'color' => $color,
+            'change' => $change
         ];
 
         update_option('sitecare_score_latest_report', $latest_report);

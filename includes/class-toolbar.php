@@ -33,10 +33,11 @@ class ToolBar extends Core
             ]
         );
 
-        $percentage = 80;
-        $color = (100 == $percentage) ? 'red' : (($percentage > 80) ? 'orange' : 'green');
-        $size = 'KB';
-        $files = '99';
+        if ('increase' == $settings['change']) {
+            $points = '3,0 6,6 0,6';
+        } else if ('decrease' == $settings['change']) {
+            $points = '0,0 6,0 3,6';
+        }
 
         $latest_url = admin_url('admin.php?page=sitecare-score&action=report&report_id=' . $settings['hash']);
 
@@ -44,24 +45,30 @@ class ToolBar extends Core
 
         // Score
         $info .= '<div class="score-container">';
-        $info .= '<div class="score" style="color: ' . $settings['color'] . ';border-color: ' . $settings['color'] . '">';
+        $info .= '<div class="score-circle" style="border-color: ' . $settings['color'] . '">';
+        $info .= '<div class="score"><div class="score-number" style="color: ' . $settings['color'] . ';">';
         $info .= $settings['score'];
+        $info .= '</div>';
+
+        if (!empty($settings['change'])) {
+            $info .= '<div class="score-arrow">';
+            $info .= '<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg"><polygon points="' . $points . '" fill="' . $settings['color'] . '"/></svg>';
+            $info .= '</div>';
+        }
+
         $info .= '</div>';
         $info .= '</div>';
 
         // Links
-        $info .= '<table class="links-container">';
+        $info .= '<div class="links">';
 
-        $info .= '<tr class="latest"><td>';
+        $info .= '<div class="latest">';
         $info .= '<a href="' . esc_url($latest_url) . '">View Latest Report</a>';
-        $info .= '</td></tr>';
+        $info .= '</div>';
 
-        $info .= '<tr class="history"><td>';
+        $info .= '<div class="history">';
         $info .= '<a href="' . esc_url(admin_url('admin.php?page=sitecare-history')) . '">View Score History</a>';
-        $info .= '</td></tr>';
-
-        $info .= '</table>';
-
+        $info .= '</div>';
 
         $info .= '</div>';
 
@@ -72,6 +79,15 @@ class ToolBar extends Core
                 'title' => $info,
             ]
         );
+
+//        $wp_admin_bar->add_node(
+//            array(
+//                'parent' => 'sitecare-score-adminmenu',
+//                'id' => 'sitecare-score-history',
+//                'title' => 'Score History',
+//                'href' => esc_url(admin_url('admin.php?page=sitecare-history')),
+//            )
+//        );
 
     }
 

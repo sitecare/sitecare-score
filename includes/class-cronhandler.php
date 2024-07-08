@@ -28,7 +28,8 @@ class CronHandler extends Data
             $this->set_latest_report(
                 $response['report_hash'],
                 $response['score'],
-                $response['color']
+                $response['color'],
+                $response['change']
             );
         }
     }
