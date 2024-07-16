@@ -90,6 +90,26 @@ class Core
 
     }
 
+    public function generate_svg_circle($score, $color): string
+    {
+        $radius = 44;
+        $strokeWidth = 12;
+        $circumference = 2 * M_PI * $radius;
+        $dashArray = $circumference;
+        $dashOffset = $circumference * (1 - $score / 100);
+
+        return "
+        <div class='score-svg'>
+            <svg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
+                <circle cx='50' cy='50' r='$radius' fill='none' stroke='#e7e7e7' stroke-width='$strokeWidth' />
+                <circle cx='50' cy='50' r='$radius' fill='none' stroke='$color' stroke-width='$strokeWidth'
+                    stroke-linecap='round' transform='rotate(-90 50 50)'
+                    stroke-dasharray='$dashArray' stroke-dashoffset='$dashOffset' />
+                        <text x='50%' y='55%' text-anchor='middle' dominant-baseline='middle' fill='black' font-size='42'  font-weight='bold'>$score</text>
+            </svg>
+        </div>";
+    }
+    
     public function get_allowed_tags()
     {
 

@@ -320,7 +320,6 @@
 
 }
 
-
 /* Accordion */
 
 .sitecare-report-score-accordion {
@@ -620,18 +619,28 @@
 
 /* Dashboard Widget */
 
+#sitecare_score_dashboard_widget .inside {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.sitecare-score-dashboard-widget-container {
+
+}
+
 .sitecare-score-dashboard-widget {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-auto-rows: minmax(64px, auto);
+    display: flex;
     column-gap: 16px;
-    align-items: center;
-    justify-content: start;
+    padding: 12px !important;
 }
 
 .sitecare-score-dashboard-widget .sitecare-score-dashboard-widget,
-.sitecare-score-dashboard-widget .score-container,
-.sitecare-score-dashboard-widget .score,
+.sitecare-score-dashboard-widget .score-text-container,
+.sitecare-score-dashboard-widget .score-circle {
+    display: flex;
+}
+
+.sitecare-score-dashboard-widget .score-text-container,
 .sitecare-score-dashboard-widget .score-circle {
     display: flex;
     justify-content: center;
@@ -639,7 +648,19 @@
 }
 
 .sitecare-score-dashboard-widget .score {
-    gap: 4px;
+    padding: 10px 12px;
+    border: 1px solid #F0F0F0;
+    border-radius: 8px;
+}
+
+.sitecare-score-dashboard-widget .score-text-container {
+    margin-top: 4px;
+    gap: 3px;
+}
+
+.sitecare-score-dashboard-widget .score .score-text {
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .sitecare-score-dashboard-widget .score-circle {
@@ -657,9 +678,64 @@
     font-size: 40px !important;
 }
 
+.sitecare-score-dashboard-widget .issues {
+    border: 1px solid #F0F0F0;
+    border-radius: 8px;
+    flex-grow: 1;
+}
+
+.sitecare-score-dashboard-widget .issues .title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: #004ECC;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 0.5em .75em !important;
+    font-weight: bold !important;
+    font-size: 12px !important;
+}
+
+.sitecare-score-dashboard-widget .issues .title .svg {
+    line-height: 1;
+}
+
+.sitecare-score-dashboard-widget .issues .title .text {
+    color: white !important;
+}
+
 .sitecare-score-dashboard-widget .issues ul {
     list-style: disc;
-    padding-left: 1em;
+    padding: 0.5em 0.5em 0.5em 0.75em !important;
+    margin: 0 !important;
+}
+
+.sitecare-score-dashboard-widget .issues ul.dashed {
+    list-style-type: none;
+}
+.sitecare-score-dashboard-widget .issues ul.dashed > li {
+}
+.sitecare-score-dashboard-widget .issues ul.dashed > li:before {
+    content: "– ";
+    color: #004ECC;
+    font-weight: bold;
+}
+
+.sitecare-score-dashboard-widget .score-arrow {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+
+.sitecare-score-dashboard-widget .score-arrow svg {
+    width: 12px;
+    height: 12px;
+}
+
+.sitecare-score-dashboard-widget-container .latest-report {
+    text-align: center;
+    border-top: 1px solid #F0F0F0;
+    padding: 10px 0;
 }
 
 
