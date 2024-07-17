@@ -67,7 +67,9 @@ class ToolBar extends Core
                 $score_circle .= 'M4 1L4 11M4 11L1 8M4 11L7 8';
             }
 
-            $score_circle .= '" stroke="#FFCC00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            $score_circle .= '" stroke="';
+            $score_circle .= $settings['color'];
+            $score_circle .= '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
     </svg>';
 
         }
