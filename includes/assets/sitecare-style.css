@@ -267,7 +267,6 @@
 }
 
 .sitecare-report .score {
-
     display: flex;
     flex-direction: column;
     border-radius: 12px;
@@ -713,8 +712,10 @@
 .sitecare-score-dashboard-widget .issues ul.dashed {
     list-style-type: none;
 }
+
 .sitecare-score-dashboard-widget .issues ul.dashed > li {
 }
+
 .sitecare-score-dashboard-widget .issues ul.dashed > li:before {
     content: "– ";
     color: #004ECC;
@@ -755,6 +756,21 @@
 }
 
 .sitecare-score-toolbar {
+    padding: 0 4px 0 0 !important;
+}
+
+.sitecare-score-toolbar .score {
+    padding: 4px !important;
+    border: 1px solid #F0F0F0;
+    border-radius: 12px !important;
+}
+
+.sitecare-score-toolbar .score-svg {
+    margin-bottom: 0 !important;
+    line-height: 1 !important;
+}
+
+.sitecare-score-toolbar {
     gap: 10px;
 }
 
@@ -780,8 +796,9 @@
 
 .sitecare-score-toolbar .links a {
     height: auto !important;
-    padding: 8px 0 !important;
+    padding: 14px 0 !important;
     line-height: 1 !important;
+    color: white !important;
 }
 
 .sitecare-score-toolbar .links .latest {
@@ -789,5 +806,5 @@
 }
 
 .sitecare-score-toolbar .links .latest a {
-    padding-bottom: 10px !important;
+    padding-bottom: 16px !important;
 }

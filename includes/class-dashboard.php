@@ -9,7 +9,8 @@ class Dashboard extends Core
 
     public function __construct()
     {
-        add_action('admin_enqueue_scripts', [$this, 'admin_enqueue']);
+        add_action('admin_enqueue_scripts', [$this, 'enqueue_scripts']);
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
 
         $this->start = new Start();
         $this->scan = new Scan();
@@ -45,10 +46,14 @@ class Dashboard extends Core
 
     }
 
-    public function admin_enqueue(): void
+    public function enqueue_scripts(): void
     {
 
         $this->enqueue_sitecare_styles();
+
+        if (!is_admin()) {
+            return;
+        }
 
         $screen = get_current_screen();
 
