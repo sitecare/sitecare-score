@@ -22,18 +22,46 @@ class Report extends Core
         $report_data = $data->data;
         $items = json_decode($report_data->score_data);
 
-        $report_limit_current = $data->report_limit->current;
-        $report_limit_max = $data->report_limit->max;
-
         $dt = new \DateTime($report_data->local_datetime);
 
         ?>
 
         <div class="sitecare-report">
 
-            <?php if (!empty($data->report_limit_message)) { ?>
-                <div class="sitecare-report-limit">
-                    <?php echo $data->report_limit_message; ?>
+            <?php
+            if (!empty($data->report_limit_message)) {
+
+                $max = '';
+                if ($data->report_limit->current >= $data->report_limit->max) {
+                    $max = ' max';
+                }
+
+                ?>
+                <div style="text-align: center;">
+                    <div class="sitecare-report-limit-container<?php echo $max; ?>">
+                        <div class="sitecare-report-limit-inner">
+                            <div class="sitecare-report-limit">
+                                <?php if ($data->report_limit->current >= $data->report_limit->max) { ?>
+
+                                    <svg width="16" height="17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#a)">
+                                            <path d="M8 16.5A8 8 0 1 0 8 .499 8 8 0 0 0 8 16.5Zm0-12c.416 0 .75.334.75.75v3.5c0 .416-.334.75-.75.75a.748.748 0 0 1-.75-.75v-3.5c0-.416.334-.75.75-.75Zm-1 7a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"
+                                                  fill="#E00099"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="a">
+                                                <path fill="#E00099" transform="translate(0 .5)" d="M0 0h16v16H0z"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                <?php } ?>
+
+                                <div class="text">
+                                    <?php echo $data->report_limit_message; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             <?php } ?>
 

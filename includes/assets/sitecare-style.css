@@ -253,13 +253,40 @@
     margin-bottom: 20px;
 }
 
+.sitecare-report .sitecare-report-limit-container {
+    display: inline-block;
+    background: rgb(26, 113, 255);
+    background: linear-gradient(90deg, rgba(26, 113, 255, 1) 0%, rgba(255, 46, 189, 1) 100%);
+    padding: 2px;
+    margin: 0 auto 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.sitecare-report .sitecare-report-limit-container.max {
+    background: #E00099;
+}
+
+.sitecare-report .sitecare-report-limit-inner {
+    display: inline-block;
+    border-radius: 6px;
+    background: white;
+    padding: 0.5em 1em;
+}
+
 .sitecare-report .sitecare-report-limit {
-    padding: 1em 1.5em;
+    display: flex;
+    align-items: center;
     text-align: center;
-    border-radius: 12px;
-    border: 1px solid #F0F0F0;
-    box-shadow: 0 4px 40px 0 #00000005;
-    margin-bottom: 20px;
+    gap: 6px;
+}
+
+.sitecare-report .sitecare-report-limit .hilite {
+    font-weight: bold;
+}
+
+.sitecare-report .sitecare-report-limit-container.max .sitecare-report-limit .hilite {
+    color: #E00099;
 }
 
 .sitecare-report .content {
