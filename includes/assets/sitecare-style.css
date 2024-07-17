@@ -253,6 +253,22 @@
     margin-bottom: 20px;
 }
 
+.sitecare-report .sitecare-report-summary .score-history {
+    display: inline-block;
+    border: 2px solid #E00099;
+    border-radius: 8px;
+    margin-top: 12px;
+    padding: 6px 8px;
+    color: #E00099;
+    text-decoration: none;
+}
+
+.sitecare-report .sitecare-report-summary .score-history-inner {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
 .sitecare-report .sitecare-report-limit-container {
     display: inline-block;
     background: rgb(26, 113, 255);

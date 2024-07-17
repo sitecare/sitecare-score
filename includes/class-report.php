@@ -85,6 +85,21 @@ class Report extends Core
                         Read our expert recommendations
                         below to learn how to ensure your website is secure and following best practices.
                     </div>
+
+                    <a href="<?php echo esc_url(admin_url('admin.php?page=sitecare-history')); ?>"
+                       class="score-history">
+                        <div class="score-history-inner">
+                            <div class="">
+                                View Past Reports
+                            </div>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 10H15M15 10L10 5M15 10L10 15" stroke="#E00099" stroke-width="2"
+                                      stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                    </a>
+
                 </div>
                 <div class="score" style="background: <?php echo $data->score_bgcolor; ?>">
                     <?php echo $this->generate_svg_circle($report_data->score, $data->score_color); ?>
