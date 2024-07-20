@@ -59,7 +59,7 @@ class ToolBar extends Core
                 <circle cx="32" cy="32" r="' . $radius . '" fill="none" stroke="' . $settings['color'] . '" stroke-width="' . $strokeWidth . '"
                     stroke-linecap="round" transform="rotate(-90 32 32)"
                     stroke-dasharray="' . $dashArray . '" stroke-dashoffset="' . $dashOffset . '" />
-                <text x="' . $scoreTextX . '" y="55%" text-anchor="middle" dominant-baseline="middle" fill="black" font-size="28" font-weight="bold" class="score-number">65</text>';
+                <text x="' . $scoreTextX . '" y="55%" text-anchor="middle" dominant-baseline="middle" fill="black" font-size="28" font-weight="bold" class="score-number">' . $settings['score'] . '</text>';
 
         if (!empty($settings['change'])) {
             $score_circle .= '<svg x="65%" y="27" width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">';

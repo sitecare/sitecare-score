@@ -14,6 +14,8 @@ namespace SiteCare;
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
+$version = '1.1.0';
+
 if (!defined('ABSPATH')) {
     exit;
 }
@@ -32,6 +34,10 @@ if (!defined('SITECARE_PLUGIN_DIR')) {
 
 if (!defined('SITECARE_PLUGIN_FILE')) {
     define('SITECARE_PLUGIN_FILE', __FILE__);
+}
+
+if (!defined('SITECARE_PLUGIN_VERSION')) {
+    define('SITECARE_PLUGIN_VERSION', $version);
 }
 
 require_once plugin_dir_path(__FILE__) . 'includes/autoloader.php';

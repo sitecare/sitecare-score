@@ -18,8 +18,7 @@ class Core
 
     public function get_current_plugin_version()
     {
-        $plugin_data = get_plugin_data(SITECARE_PLUGIN_FILE);
-        return $plugin_data['Version'];
+        return SITECARE_PLUGIN_VERSION;
     }
 
     public function display_header(): void
@@ -109,7 +108,7 @@ class Core
             </svg>
         </div>";
     }
-    
+
     public function get_allowed_tags()
     {
 
