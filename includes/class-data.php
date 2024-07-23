@@ -132,7 +132,7 @@ class Data extends Core
 
     }
 
-    public function send_data($init = false, $hash = '', $type = 'cron'): \WP_Error|array
+    public function send_data($init = false, $hash = '', $type = 'cron')
     {
 
         $headers = ['Content-Type' => 'application/json'];
