@@ -188,7 +188,7 @@ class Data extends Core
         return 'false';
     }
 
-    public function check_ssl_certificate_status($url): false|array|string
+    public function check_ssl_certificate_status($url)
     {
 
         if (strpos($url, 'https') === false) {
