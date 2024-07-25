@@ -132,7 +132,7 @@ class Data extends Core
 
     }
 
-    public function send_data($init = false, $hash = '', $type = 'cron'): \WP_Error|array
+    public function send_data($init = false, $hash = '', $type = 'cron')
     {
 
         $headers = ['Content-Type' => 'application/json'];
@@ -188,7 +188,7 @@ class Data extends Core
         return 'false';
     }
 
-    public function check_ssl_certificate_status($url): false|array|string
+    public function check_ssl_certificate_status($url)
     {
 
         if (strpos($url, 'https') === false) {

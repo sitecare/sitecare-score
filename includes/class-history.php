@@ -192,7 +192,7 @@ class History extends Data
 
     }
 
-    public function get_history(): \WP_Error|array
+    public function get_history()
     {
 
         $wp_admin_url = 'admin.php?page=sitecare-score';
