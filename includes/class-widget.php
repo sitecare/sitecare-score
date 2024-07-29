@@ -12,6 +12,10 @@ class Widget extends Core
 
     public function add_dashboard_widgets(): void
     {
+        if (empty($this->report_exists())) {
+            return;
+        }
+
         wp_add_dashboard_widget(
             'sitecare_score_dashboard_widget',
             'SiteCare Score',

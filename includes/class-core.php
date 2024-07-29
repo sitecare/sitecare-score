@@ -170,4 +170,33 @@ class Core
 
     }
 
+    public function set_latest_report($hash, $score, $color, $bgColor, $change, $issues, $label)
+    {
+
+        $report_url = admin_url('admin.php?page=sitecare-score&action=report&report_id=' . $hash);
+
+        $latest_report = [
+            'hash' => $hash,
+            'report_url' => $report_url,
+            'score' => $score,
+            'label' => $label,
+            'color' => $color,
+            'bg_color' => $bgColor,
+            'change' => $change,
+            'issues' => $issues,
+        ];
+
+        update_option('sitecare_score_latest_report', $latest_report);
+
+    }
+
+    public function report_exists()
+    {
+        $latest = get_option('sitecare_score_latest_report');
+        if (empty($latest['hash'])) {
+            return false;
+        }
+        return true;
+    }
+
 }
