@@ -61,13 +61,6 @@ class Dashboard extends Core
             return;
         }
 
-//        if (isset($_REQUEST['_wpnonce'])) {
-//            $nonce = sanitize_text_field($_REQUEST['_wpnonce']);
-//            if (!wp_verify_nonce($nonce, 'sitecare_nonce')) {
-//                return;
-//            }
-//        }
-
         if (empty($this->get_action())) {
 
             // Add start script
