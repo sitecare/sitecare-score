@@ -49,8 +49,6 @@ class Dashboard extends Core
     public function enqueue_scripts(): void
     {
 
-        $this->enqueue_sitecare_styles();
-
         if (!is_admin()) {
             return;
         }
@@ -60,6 +58,8 @@ class Dashboard extends Core
         if (!str_contains($screen->id, 'sitecare-score')) {
             return;
         }
+
+        $this->enqueue_sitecare_styles();
 
         if (empty($this->get_action())) {
 
