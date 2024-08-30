@@ -38,23 +38,28 @@ class Score extends Core
             6
         );
 
-        add_submenu_page(
-            'sitecare-score',
-            'Scan My Site',
-            'Scan My Site',
-            'manage_options',
-            'sitecare-score',
-            [$this->dashboard, 'init'],
-        );
+        if (!empty($this->report_exists())) {
 
-        add_submenu_page(
-            'sitecare-score',
-            'Score History',
-            'Score History',
-            'manage_options',
-            'sitecare-history',
-            [$this->history, 'init'],
-        );
+            add_submenu_page(
+                'sitecare-score',
+                'Scan My Site',
+                'Scan My Site',
+                'manage_options',
+                'sitecare-score',
+                [$this->dashboard, 'init'],
+            );
+
+            add_submenu_page(
+                'sitecare-score',
+                'Score History',
+                'Score History',
+                'manage_options',
+                'sitecare-history',
+                [$this->history, 'init'],
+            );
+
+        }
+
     }
 
     public function hide_admin_notices(): void

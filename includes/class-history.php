@@ -19,15 +19,17 @@ class History extends Data
         $data = json_decode($history['body']);
         $items = $data->data;
 
-        $this->set_latest_report(
-            $data->latest->report_hash,
-            $data->latest->score,
-            $data->latest->color,
-            $data->latest->bg_color,
-            $data->latest->change,
-            $data->latest->issues,
-            $data->latest->label
-        );
+        if (!empty($data->latest)) {
+            $this->set_latest_report(
+                $data->latest->report_hash,
+                $data->latest->score,
+                $data->latest->color,
+                $data->latest->bg_color,
+                $data->latest->change,
+                $data->latest->issues,
+                $data->latest->label
+            );
+        }
 
         $this->history_header();
         $this->history_chart($items);
@@ -58,6 +60,10 @@ class History extends Data
 
     public function history_chart($items): void
     {
+
+        if (count($items) < 2) {
+            return;
+        }
 
         $labels = '[';
         $data = '[';
