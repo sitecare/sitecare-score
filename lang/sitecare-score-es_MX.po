@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SiteCare Score\n"
-"POT-Creation-Date: 2024-09-12 22:09-0700\n"
-"PO-Revision-Date: 2024-09-12 22:09-0700\n"
+"POT-Creation-Date: 2024-10-02 00:37-0700\n"
+"PO-Revision-Date: 2024-10-02 00:38-0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_MX\n"
@@ -23,6 +23,40 @@ msgstr ""
 #: includes/class-history.php:53
 msgid "Score History"
 msgstr "Historial de puntuaciones"
+
+#: includes/class-history.php:150
+msgid "Automatic"
+msgstr "Automático"
+
+#: includes/class-history.php:152
+msgid "On Demand"
+msgstr "A la carta"
+
+#: includes/class-history.php:186
+msgid "View Report"
+msgstr "Ver Informe"
+
+#. Plugin Name of the plugin/theme
+#: includes/class-report.php:70
+msgid "SiteCare Score"
+msgstr "Puntuación de SiteCare"
+
+#: includes/class-report.php:147
+msgid ""
+"If you’d like to speak with a WordPress expert to help resolve these issues, "
+"complete the form below and a SiteCare representative will reach out to "
+"offer tailored guidance."
+msgstr ""
+"Si quieres hablar con un experto en WordPress para que te ayude a resolver "
+"estos problemas, rellena el siguiente formulario y un representante de "
+"SiteCare se pondrá en contacto contigo para ofrecerte orientación "
+"personalizada."
+
+#: includes/class-report.php:150
+#, fuzzy
+#| msgid "SiteCare"
+msgid "Contact SiteCare"
+msgstr "SiteCare"
 
 #: includes/class-scan.php:39
 msgid ""
@@ -85,9 +119,15 @@ msgstr ""
 "nuestro\n"
 "                Informes. "
 
-#. Plugin Name of the plugin/theme
-msgid "SiteCare Score"
-msgstr "Puntuación de SiteCare"
+#: includes/class-toolbar.php:90
+msgid "View Latest Report"
+msgstr "Ver el último informe"
+
+#: includes/class-toolbar.php:93
+#, fuzzy
+#| msgid "Score History"
+msgid "View Score History"
+msgstr "Historial de puntuaciones"
 
 #. Plugin URI of the plugin/theme
 msgid "https://github.com/sitecare/sitecare-score"

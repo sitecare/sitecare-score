@@ -87,10 +87,10 @@ class ToolBar extends Core
         // Links
         $links = '<div class="links">';
         $links .= '<div class="latest">';
-        $links .= '<a href="' . esc_url($latest_url) . '">View Latest Report</a>';
+        $links .= '<a href="' . esc_url($latest_url) . '">' . esc_html__('View Latest Report', 'sitecare-score') . '</a>';
         $links .= '</div>';
         $links .= '<div class="history">';
-        $links .= '<a href="' . esc_url(admin_url('admin.php?page=sitecare-history')) . '">View Score History</a>';
+        $links .= '<a href="' . esc_url(admin_url('admin.php?page=sitecare-history')) . '">' . esc_html__('View Score History', 'sitecare-score') . '</a>';
         $links .= '</div>';
         $links .= '</div>';
 
