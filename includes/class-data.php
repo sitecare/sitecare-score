@@ -64,6 +64,7 @@ class Data extends Core
         $data['timezone'] = wp_timezone_string();
         $data['gmt_offset'] = get_option('gmt_offset');
         $data['local_datetime'] = current_time('mysql');
+        $data['locale'] = get_locale();
 
         foreach (get_plugins() as $path => $plugin) {
 
