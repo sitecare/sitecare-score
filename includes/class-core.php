@@ -112,12 +112,16 @@ class Core
     public function enqueue_sitecare_styles(): void
     {
 
-        wp_enqueue_style(
-            'sitecare-admin-css',
-            plugin_dir_url(__FILE__) . 'assets/sitecare-style.css',
-            false,
-            $this->get_current_plugin_version()
-        );
+        if (current_user_can('manage_options')) {
+
+            wp_enqueue_style(
+                'sitecare-admin-css',
+                plugin_dir_url(__FILE__) . 'assets/sitecare-style.css',
+                false,
+                $this->get_current_plugin_version()
+            );
+
+        }
 
     }
 

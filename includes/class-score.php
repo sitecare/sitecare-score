@@ -15,6 +15,9 @@ class Score extends Core
         add_action('admin_menu', [$this, 'plugin_menu']);
         add_action('in_admin_header', [$this, 'hide_admin_notices'], 99);
 
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_sitecare_styles']);
+        add_action('admin_enqueue_scripts', [$this, 'enqueue_sitecare_styles']);
+
         new AjaxHandler();
         new CronHandler();
         new ToolBar();

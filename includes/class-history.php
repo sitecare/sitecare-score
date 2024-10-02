@@ -230,17 +230,11 @@ class History extends Data
     public function admin_enqueue(): void
     {
 
-        if (!is_admin()) {
-            return;
-        }
-
         $screen = get_current_screen();
 
         if (!str_contains($screen->id, 'sitecare-history')) {
             return;
         }
-
-        $this->enqueue_sitecare_styles();
 
         wp_enqueue_script(
             'chartjs',
