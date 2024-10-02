@@ -166,6 +166,7 @@ class Report extends Core
 
         $data = [
             'site_url' => get_site_url(),
+            'locale' => get_locale(),
             'report_hash' => $hash,
             'plugin_version' => $this->get_current_plugin_version()
         ];
