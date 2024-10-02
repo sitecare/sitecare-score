@@ -36,11 +36,11 @@ class Scan
             </div>
 
             <div class="text">
-                <?php esc_html_e("Your website scan is underway. We'll have your SiteCare Score ready for you in a flash!", 'sitecare-score') ?>
+                <?php _e("Your website scan is underway. We'll have your SiteCare Score ready for you in a flash!", 'sitecare-score') ?>
             </div>
 
             <div class="subtext">
-                <?php esc_html_e('A thorough check-up takes a little time. Thanks for hanging tight!', 'sitecare-score') ?>
+                <?php _e('A thorough check-up takes a little time. Thanks for hanging tight!', 'sitecare-score') ?>
             </div>
 
             <div class="loader-bar-container">
@@ -76,7 +76,7 @@ class Scan
                     id="status-text"
                     class="status-text"
             >
-                <?php esc_html_e('Initializing scan', 'sitecare-score') ?>
+                <?php _e('Initializing scan', 'sitecare-score') ?>
             </div>
 
         </div>

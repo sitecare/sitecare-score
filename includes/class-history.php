@@ -50,7 +50,7 @@ class History extends Data
             </svg>
 
             <div class="headline-text">
-                <?php esc_html_e('Score History', 'sitecare-score') ?>
+                <?php _e('Score History', 'sitecare-score') ?>
             </div>
         </div>
 
@@ -147,9 +147,9 @@ class History extends Data
 
                 $dt = new \DateTime($item->local_datetime);
 
-                $report_type = 'Automatic';
+                $report_type = __('Automatic', 'sitecare-score');
                 if ('ajax' == $item->report_type) {
-                    $report_type = 'On Demand';
+                    $report_type = __('On Demand', 'sitecare-score');
                 }
 
                 $report_url = admin_url('admin.php?page=sitecare-score&action=report&report_id=' . $item->hash);
@@ -162,8 +162,9 @@ class History extends Data
 
                 <tr>
                     <td>
-                        <div class="score" style="<?php echo $score_style; ?>"><?php echo $item->score; ?>
-                            - <?php echo $item->label; ?></div>
+                        <div class="score" style="<?php echo $score_style; ?>">
+                            <?php echo $item->score; ?> - <?php echo $item->label; ?>
+                        </div>
                     </td>
                     <td>
                         <div class="sitecare-score-date score-date">
@@ -181,10 +182,10 @@ class History extends Data
                     </td>
                     <td><?php echo $report_type; ?></td>
                     <td>
-                        <a href="<?php echo $report_url; ?>"
-                           class="view-report">
-                            <div class="link-text">View Report</div>
-                        </a></td>
+                        <a href="<?php echo $report_url; ?>" class="view-report">
+                            <div class="link-text"><?php _e('View Report', 'sitecare-score') ?></div>
+                        </a>
+                    </td>
                 </tr>
 
             <?php } ?>

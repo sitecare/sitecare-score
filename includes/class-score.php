@@ -11,6 +11,7 @@ class Score extends Core
     public function __construct()
     {
 
+        add_action('init', [$this, 'load_text_domain']);
         add_action('admin_menu', [$this, 'plugin_menu']);
         add_action('in_admin_header', [$this, 'hide_admin_notices'], 99);
 
@@ -22,6 +23,18 @@ class Score extends Core
         $this->dashboard = new Dashboard();
         $this->history = new History();
 
+    }
+
+    public function load_text_domain(): void
+    {
+
+        $path = SITECARE_PLUGIN_RELATIVE_DIR . '/lang';
+
+        load_plugin_textdomain(
+            'sitecare-score',
+            false,
+            $path
+        );
     }
 
     public function plugin_menu(): void

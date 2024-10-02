@@ -20,11 +20,11 @@ class Start
         <div class="sitecare-start" style="text-align: center;">
 
             <div class="headline">
-                <?php esc_html_e('Get My SiteCare Score', 'sitecare-score') ?>
+                <?php _e('Get My SiteCare Score', 'sitecare-score') ?>
             </div>
 
             <p>
-                <?php esc_html_e('By clicking the "Scan my Website" button, you will initiate a multipoint WordPress site
+                <?php _e('By clicking the "Scan my Website" button, you will initiate a multipoint WordPress site
             health diagnostic that will thoroughly assess the status of your website. This diagnostic tool will analyze
             various aspects of your WordPress site and server health and will provide you with recommended improvements
             to enhance its performance and security.', 'sitecare-score') ?>
@@ -38,13 +38,13 @@ class Start
                         <input id="email_report" name="email_report" value="true" type="checkbox" checked>
                     </div>
                     <label for="email_report">
-                        <?php esc_html_e('Please email me a report', 'sitecare-score') ?>
+                        <?php _e('Please email me a report', 'sitecare-score') ?>
                     </label>
                 </div>
 
                 <div class="email-text-container">
                     <label for="email" style="display: block;">
-                        <?php esc_html_e('Email the report to', 'sitecare-score') ?>:
+                        <?php _e('Email the report to', 'sitecare-score') ?>:
                     </label>
                     <input
                             type="text"
@@ -57,10 +57,10 @@ class Start
 
                 <input type="hidden" name="action" value="scan"/>
                 <input type="hidden" name="_wpnonce" value="<?php echo esc_attr($nonce); ?>"/>
-                <input type="submit" class="btn" value="Scan My Website"/>
+                <input type="submit" class="btn" value="<?php echo __('Scan My Website', 'sitecare-score'); ?>"/>
 
                 <div class="disclaimer">
-                    <?php esc_html_e('Clicking "Scan my Website" allows us to track usage data to help improve future recommendations in our
+                    <?php _e('Clicking "Scan my Website" allows us to track usage data to help improve future recommendations in our
                 reports. ', 'sitecare-score'); ?><?php echo wp_kses_post("<a href=\"https://sitecare.com/usage-tracking/\" target=\"_blank\">More Info</a>."); ?>
                 </div>
 

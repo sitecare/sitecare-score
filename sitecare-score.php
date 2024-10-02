@@ -10,6 +10,7 @@ namespace SiteCare;
  * Author URI: https://sitecare.com
  * Version: 1.1.2
  * Text Domain: sitecare-score
+ * Domain Path: /lang
  * License: GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -30,6 +31,10 @@ if (!defined('SITECARE_PLUGIN_URL')) {
 
 if (!defined('SITECARE_PLUGIN_DIR')) {
     define('SITECARE_PLUGIN_DIR', dirname(__FILE__));
+}
+
+if (!defined('SITECARE_PLUGIN_RELATIVE_DIR')) {
+    define('SITECARE_PLUGIN_RELATIVE_DIR', dirname(plugin_basename(__FILE__)));
 }
 
 if (!defined('SITECARE_PLUGIN_FILE')) {

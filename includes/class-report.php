@@ -67,7 +67,7 @@ class Report extends Core
 
             <div class="sitecare-report-summary">
                 <div class="content">
-                    <div class="headline">SiteCare Score</div>
+                    <div class="headline"><?php _e('SiteCare Score', 'sitecare-score'); ?></div>
                     <div class="sitecare-score-date">
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="14">
                             <path fill="#0D0E0F"
@@ -144,11 +144,10 @@ class Report extends Core
 
             <div class="sitecare-report-contact">
 
-                <p>If you’d like to speak with a WordPress expert to help resolve these issues, complete the form below
-                    and a SiteCare representative will reach out to offer tailored guidance.</p>
+                <p><?php _e('If you’d like to speak with a WordPress expert to help resolve these issues, complete the form below and a SiteCare representative will reach out to offer tailored guidance.', 'sitecare-score'); ?></p>
 
                 <a href="https://sitecare.com/contact/?contact=plugin-support" target="_blank"
-                   class="btn contact-button">Contact SiteCare</a>
+                   class="btn contact-button"><?php _e('Contact SiteCare', 'sitecare-score'); ?></a>
 
             </div>
 
