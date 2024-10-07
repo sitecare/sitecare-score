@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SiteCare Score\n"
 "POT-Creation-Date: 2024-10-02 13:11-0700\n"
-"PO-Revision-Date: 2024-10-02 13:12-0700\n"
+"PO-Revision-Date: 2024-10-07 06:52-0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -21,9 +21,8 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
 #: includes/class-history.php:53
-#, fuzzy
 msgid "Score History"
-msgstr "Historial de puntuaciones"
+msgstr "Historial de Puntuaciones"
 
 #: includes/class-history.php:150
 msgid "Automatic"
@@ -31,61 +30,52 @@ msgstr "Automático"
 
 #: includes/class-history.php:152
 msgid "On Demand"
-msgstr "Bajo demanda"
+msgstr "Bajo Demanda"
 
 #: includes/class-history.php:186
 msgid "View Report"
-msgstr "Ver informe"
+msgstr "Ver Informe"
 
 #. Plugin Name of the plugin/theme
 #: includes/class-report.php:70
-#, fuzzy
 msgid "SiteCare Score"
 msgstr "Puntuación de SiteCare"
 
 #: includes/class-report.php:147
-#, fuzzy
 msgid ""
 "If you’d like to speak with a WordPress expert to help resolve these issues, "
 "complete the form below and a SiteCare representative will reach out to "
 "offer tailored guidance."
 msgstr ""
-"Si quieres hablar con un experto en WordPress para que te ayude a resolver "
-"estos problemas, rellena el siguiente formulario y un representante de "
-"SiteCare se pondrá en contacto contigo para ofrecerte orientación "
-"personalizada."
+"Si desea hablar con un experto en WordPress para ayudar a resolver estos "
+"problemas, complete el formulario a continuación y un representante de "
+"SiteCare se pondrá en contacto para ofrecerle una orientación personalizada."
 
 #: includes/class-report.php:150
-#, fuzzy
 msgid "Contact SiteCare"
-msgstr "Póngase en contacto con SiteCare"
+msgstr "Contacte con SiteCare"
 
 #: includes/class-scan.php:39
-#, fuzzy
 msgid ""
 "Your website scan is underway. We'll have your SiteCare Score ready for you "
 "in a flash!"
 msgstr ""
-"El escaneo de su sitio web está en marcha. ¡Tendremos tu puntuación de "
-"SiteCare lista para ti en un abrir y cerrar de ojos!"
+"El análisis de su sitio web está en curso. ¡Tendremos su Puntuación SiteCare "
+"lista en un instante!"
 
 #: includes/class-scan.php:43
-#, fuzzy
 msgid "A thorough check-up takes a little time. Thanks for hanging tight!"
-msgstr "Un chequeo exhaustivo lleva un poco de tiempo. ¡Gracias por aguantar!"
+msgstr "Un chequeo completo toma un poco de tiempo. ¡Gracias por su paciencia!"
 
 #: includes/class-scan.php:79
-#, fuzzy
 msgid "Initializing scan"
-msgstr "Inicialización del análisis"
+msgstr "Iniciando análisis"
 
 #: includes/class-start.php:23
-#, fuzzy
 msgid "Get My SiteCare Score"
-msgstr "Obtener la puntuación de My SiteCare"
+msgstr "Obtener mi Puntuación SiteCare"
 
 #: includes/class-start.php:27
-#, fuzzy
 msgid ""
 "By clicking the \"Scan my Website\" button, you will initiate a multipoint "
 "WordPress site\n"
@@ -95,71 +85,60 @@ msgid ""
 "will provide you with recommended improvements\n"
 "            to enhance its performance and security."
 msgstr ""
-"Al hacer clic en el botón \"Escanear mi sitio web\", iniciará un sitio de "
-"WordPress multipunto\n"
-"            Diagnóstico de salud que evaluará minuciosamente el estado de su "
-"sitio web. Esta herramienta de diagnóstico analizará\n"
-"            varios aspectos de su sitio de WordPress y la salud del servidor "
-"y le proporcionará mejoras recomendadas\n"
-"            para mejorar su rendimiento y seguridad."
+"Al hacer clic en el botón ‘Analizar mi sitio web’, iniciará un diagnóstico "
+"multipunto de salud\n"
+"de su sitio WordPress que evaluará exhaustivamente el estado de su página. "
+"Esta herramienta\n"
+"de diagnóstico analizará varios aspectos de la salud de su sitio WordPress y "
+"servidor,\n"
+"y le proporcionará recomendaciones para mejorar su rendimiento y seguridad."
 
 #: includes/class-start.php:41
-#, fuzzy
 msgid "Please email me a report"
 msgstr "Por favor, envíeme un informe por correo electrónico"
 
 #: includes/class-start.php:47
-#, fuzzy
 msgid "Email the report to"
-msgstr "Envíe el informe por correo electrónico a"
+msgstr "Enviar el informe a"
 
 #: includes/class-start.php:60
-#, fuzzy
 msgid "Scan My Website"
-msgstr "Escanear mi sitio web"
+msgstr "Analizar mi sitio web"
 
 #: includes/class-start.php:63
-#, fuzzy
 msgid ""
 "Clicking \"Scan my Website\" allows us to track usage data to help improve "
 "future recommendations in our\n"
 "                reports. "
 msgstr ""
-"Al hacer clic en \"Escanear mi sitio web\", podemos realizar un seguimiento "
-"de los datos de uso para ayudar a mejorar las recomendaciones futuras en "
-"nuestro\n"
-"                Informes. "
+"Al hacer clic en ‘Analizar mi sitio web’, nos permite recopilar datos de uso "
+"para ayudar a mejorar las recomendaciones futuras en\n"
+"nuestros informes. "
 
 #: includes/class-toolbar.php:90
-#, fuzzy
 msgid "View Latest Report"
 msgstr "Ver el último informe"
 
 #: includes/class-toolbar.php:93
-#, fuzzy
 msgid "View Score History"
 msgstr "Ver historial de puntuaciones"
 
 #. Plugin URI of the plugin/theme
-#, fuzzy
 msgid "https://github.com/sitecare/sitecare-score"
 msgstr "https://github.com/sitecare/sitecare-score"
 
 #. Description of the plugin/theme
-#, fuzzy
 msgid ""
 "Find hidden technical debt and track your WordPress site health with our "
 "comprehensive scanning tool."
 msgstr ""
-"Encuentre deudas técnicas ocultas y realice un seguimiento de la salud de su "
-"sitio de WordPress con nuestra completa herramienta de escaneo."
+"Descubra deuda técnica oculta y siga la salud de su sitio WordPress con "
+"nuestra herramienta de análisis integral."
 
 #. Author of the plugin/theme
-#, fuzzy
 msgid "SiteCare"
-msgstr "SiteCare (en inglés)"
+msgstr "SiteCare"
 
 #. Author URI of the plugin/theme
-#, fuzzy
 msgid "https://sitecare.com"
 msgstr "https://sitecare.com"
