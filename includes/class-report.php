@@ -80,17 +80,22 @@ class Report extends Core
                         </svg>
                         <div class="time"><?php echo $dt->format('H:i A'); ?></div>
                     </div>
+
                     <div class="">
-                        Your SiteCare Score is <span class="secondary-color"><?php echo $report_data->score; ?></span>.
-                        Read our expert recommendations
-                        below to learn how to ensure your website is secure and following best practices.
+                        <?php
+                        echo sprintf(
+                        /* translators: %s is the SiteCare score */
+                            __('Your SiteCare Score is <span class="secondary-color">%s</span>. Read our expert recommendations below to learn how to ensure your website is secure and following best practices.', 'sitecare-score'),
+                            esc_html($report_data->score)
+                        );
+                        ?>
                     </div>
 
                     <a href="<?php echo esc_url(admin_url('admin.php?page=sitecare-history')); ?>"
                        class="score-history">
                         <div class="score-history-inner">
                             <div class="">
-                                View Past Reports
+                                <?php echo __('View Past Reports', 'sitecare-score'); ?>
                             </div>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
